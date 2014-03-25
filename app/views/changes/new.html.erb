@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="col-md-6">
+	<%= form_for @change, :html => {:role => "form", multipart: true} do |t| %>
+	<%= render "shared/error_messages", :target => @change %>
+	<div class="form-group">
+		<%= t.label :name %>
+		<%= t.text_field :name, class: "form-control", autofocus: true, required: true %>
+	</div>
+	<div class="form-group">
+		<%= t.label :description %>
+		<%= t.text_area :description, class: "form-control" %>
+	</div>
+		<div class="form-group">
+			 <%= text_field_tag :search, params[:search], size: 30, class: "form-control", required: true, placeholder: "Find Your State" %>
+		<%# t.label :state %>
+		<%# t.text_field :state_id, class: "form-control" %>
+	</div>
+	<div class="form-group btn-file">
+	 <%= t.file_field :picture %>
+	</div>
+	<%= t.submit class: "btn btn-default"%>
+	<% end %>
+</div>
+</div>
+
+
+
+
+<!-- upload an image -->

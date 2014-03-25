@@ -1,0 +1,19 @@
+<div class="row">
+	<div class="col-md-4">
+		<%= form_for :user, url: sessions_path, method: :post, :html => {:role => "form"} do |t| %>
+		   <div class="form-group">
+				<%= t.label :username %>
+				<%= t.text_field :username, class: "form-control", required:true %>
+			</div>
+			<div class="form-group">
+			<%= t.label :password %>
+			 <%= t.password_field :password, class: "form-control", required: true %>
+			</div>
+			<div class="form-group">
+			 <%= t.label :confirm_password %>
+			 <%= t.password_field :password_confirmation, class: "form-control", required: true %>
+			</div>
+			<%= t.submit class: "btn btn-default" %>
+		<% end %>
+	</div>
+</div>

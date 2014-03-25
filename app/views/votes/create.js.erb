@@ -1,0 +1,10 @@
+$('#<%= @vote.change_id %> .voted').addClass("muted")
+$('#<%= @vote.change_id %> .votes').replaceWith("<p>Total Votes: <%= @aggregate_votes %></p>")
+console.log("<%= @aggregate_votes %>")
+console.log("<%= @vote.change_id  %>")
+// $("<p>Total Votes: " + "<%= @aggregate_votes %>" + "</p>").replaceAll(".votes").html;
+// $('.intro-box <a href='' + "/changes/" + "#{@voted.change_id}"]').addClass("muted")
+// console.log($("<%= @vote.change_id  %>"))
+// $('a[href*="' + "/changes/" + '16"]')
+
+// 'a[href*="' + page + '"]'

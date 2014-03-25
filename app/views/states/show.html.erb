@@ -1,0 +1,46 @@
+<div class="row">
+	<div id="senator-changes" class="col-sm-9">
+		<h1 class="text-center">Vipers in <%= @state.name %></h1>
+		<br />
+			<% @state.changes.each do |change| %>
+				<div class="col-md-4 intro-box text-center" id="<%= change.id %>">
+					<p ><%= link_to "#{change.name.upcase}", change_path(change.id) %></p>
+					<p> <%= link_to "Created By: #{change.user.username}", user_path(change.user_id) if change.user %>
+					<p><%= image_tag change.picture_url(:thumb) %></p>
+					<p class="voted"><%= link_to 'up', votes_path(vote: {upvote: true, change_id: change.id} ), :method => :post, remote: true  %> |
+					<%= link_to 'down', votes_path(vote: { upvote: false, change_id: change.id }), :method => :post, remote: true %></p>
+
+					<p class="votes">Total Votes: <%= change.votes.aggregate_votes(change.id) %></p>
+				</div>
+			<% end %>
+	</div>
+	<div id="sidebar" class="col-sm-3">
+	<h3><%= @state.abbreviation %> Representatives</h3>
+	<h4>Senators</h4>
+		<% @state.senates.each do |member| %>
+			<p><%= member.first_name %>
+				<%= member.last_name %>
+				Party: <%= member.party %>
+				Twiter : <%= link_to "Twiiter", "https://twitter.com/#{member.twiter}" %>
+				facebook: <%= link_to "facebook", "https://www.facebook.com/#{member.facebook}" %>
+				phone: <%= member.phone %>
+			</p>
+		<% end %>
+
+
+	<h4>House Members</h4>
+	<% @state.houses.each do |member| %>
+		<p><%= member.first_name %>
+		<%= member.last_name %>
+		Party: <%= member.party %>
+		Twiter : <%= link_to "Twiiter", "https://twitter.com/#{member.twiter}" %>
+		facebook: <%= link_to "facebook", "https://www.facebook.com/#{member.facebook}" %>
+		phone: <%= member.phone %>
+	<% end %>
+
+	</div> 
+</div>
+
+
+
+

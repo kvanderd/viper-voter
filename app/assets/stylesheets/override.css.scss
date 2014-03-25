@@ -1,0 +1,40 @@
+input {
+	outline: none;
+}
+
+.container {
+	padding-top: 150px;
+}
+
+nav {
+ padding-left: 3em;
+}
+
+
+.navbar-default  {
+  color: #7EBF3D;
+}
+
+body, input, textarea {
+  font-family: Rockwell, "Courier New", Courier, Georgia,
+                 Times, "Times New Roman", serif;
+}
+
+.form-control:focus{
+	border-color: rgba(126, 239, 104, 0.8);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+	outline: 0 none;
+}
+
+
+input[type="submit"]:focus {
+	outline:none;
+	border: 2px solid green;
+
+}
+
+
+a {color: green;}
+a:hover {color: purple;}
+
+nav {background-color: white;}
