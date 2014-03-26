@@ -10,7 +10,7 @@
 					<p class="voted"><%= link_to 'up', votes_path(vote: {upvote: true, change_id: change.id} ), :method => :post, remote: true  %> |
 					<%= link_to 'down', votes_path(vote: { upvote: false, change_id: change.id }), :method => :post, remote: true %></p>
 
-					<p class="votes">Total Votes: <%= change.votes.aggregate_votes(change.id) %></p>
+					<p class="votes">Total Votes: <%= change.aggregate %></p>
 				</div>
 			<% end %>
 	</div>

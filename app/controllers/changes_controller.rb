@@ -2,8 +2,6 @@ class ChangesController < ApplicationController
 
   def new
     @change = Change.new
-    @changes = Change.all
-    @changes = @changes.sort_by { |c| c.aggregate }.last(3).reverse
   end
 
   def create
@@ -17,7 +15,8 @@ class ChangesController < ApplicationController
 
   def show
   	@change = Change.find(params[:id])
-    @aggregate_votes = @change.votes.aggregate_votes(@change.id)
+    @aggregate_votes = @change.aggregate
+    # @aggregate_votes = @change.votes.aggregate_votes(@change.id)
   	@vote = Vote.new
   end
 

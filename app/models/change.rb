@@ -27,7 +27,8 @@ class Change < ActiveRecord::Base
   end
 
   def aggregate
-    self.up_votes.count - self.down_votes.count
+    self.up_votes.size - self.down_votes.size
   end
+
 
 end
