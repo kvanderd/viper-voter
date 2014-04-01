@@ -44,7 +44,8 @@ gem 'carrierwave'
 # gem "rmagick"
 gem 'mini_magick'
 
-
+#facebook omnio
+gem 'omniauth-facebook'
 group :test, :development do
   gem 'selenium-webdriver'
   gem 'database_cleaner'
