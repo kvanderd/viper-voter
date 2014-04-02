@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327180714) do
+ActiveRecord::Schema.define(version: 20140402150859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: true do |t|
+    t.string "name"
+  end
+
+  create_table "categorizations", force: true do |t|
+    t.integer "change_id"
+    t.integer "category_id"
+  end
 
   create_table "changes", force: true do |t|
     t.string   "name"
@@ -22,19 +31,9 @@ ActiveRecord::Schema.define(version: 20140327180714) do
     t.text     "description"
     t.string   "picture"
     t.integer  "user_id"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "state_id"
-  end
-
-  create_table "cities", force: true do |t|
-    t.string  "name"
-    t.integer "zip"
-    t.integer "state_id"
-  end
-
-  create_table "contacts", force: true do |t|
-    t.integer "senate_id"
   end
 
   create_table "houses", force: true do |t|
@@ -54,16 +53,6 @@ ActiveRecord::Schema.define(version: 20140327180714) do
     t.boolean "in_office"
     t.integer "state_id"
     t.integer "party_id"
-  end
-
-  create_table "mobiles", force: true do |t|
-    t.string "phone"
-  end
-
-  create_table "parties", force: true do |t|
-    t.boolean "democrat"
-    t.boolean "republican"
-    t.boolean "independent"
   end
 
   create_table "search_suggestions", force: true do |t|
@@ -90,7 +79,6 @@ ActiveRecord::Schema.define(version: 20140327180714) do
     t.boolean "in_office"
     t.integer "state_id"
     t.integer "party_id"
-    t.string  "bio"
   end
 
   create_table "states", force: true do |t|
@@ -101,6 +89,7 @@ ActiveRecord::Schema.define(version: 20140327180714) do
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "password_digest"
+    t.integer  "state_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -110,14 +99,6 @@ ActiveRecord::Schema.define(version: 20140327180714) do
     t.integer  "change_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "webs", force: true do |t|
-    t.string "twiter"
-    t.string "facebook"
-    t.string "contact"
-    t.string "youtub_id"
-    t.string "website"
   end
 
 end

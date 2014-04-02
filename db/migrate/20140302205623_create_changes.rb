@@ -6,6 +6,7 @@ class CreateChanges < ActiveRecord::Migration
     	t.text :description
     	t.string :picture
     	t.belongs_to :user
+        t.belongs_to :category
     	t.timestamps
     end
   end

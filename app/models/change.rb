@@ -2,6 +2,9 @@ class Change < ActiveRecord::Base
 	belongs_to :user
   belongs_to :state
 	has_many :votes
+
+  has_many :categorizations
+  has_many :categories, through: :categorizations
 	mount_uploader :picture, PictureUploader
 
 

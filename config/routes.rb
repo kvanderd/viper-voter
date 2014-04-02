@@ -12,6 +12,7 @@ Opinion::Application.routes.draw do
   resources :votes
 
   resources :changes
+  resources :categories
    #do 
   #   post :vote
   # end

@@ -12,9 +12,9 @@ class SearchSuggestion < ActiveRecord::Base
 
 
   def self.index_states
-    State.find_each do |state|
-      index_term(state.name)
-      state.name.split.each { |t| index_term(t) }
+    Category.find_each do |topic|
+      index_term(topic.name)
+      topic.name.split.each { |t| index_term(t) }
     end
   end
   

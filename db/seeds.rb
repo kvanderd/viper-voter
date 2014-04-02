@@ -8,21 +8,21 @@
 
 require 'faker'
 
-20.times do 
-	User.create(username: Faker::Name.name, password: "passwordlove", password_confirmation: "passwordlove")
-end
+# 20.times do 
+# 	User.create(username: Faker::Name.name, password: "passwordlove", password_confirmation: "passwordlove")
+# end
 
-20.times do
-	Change.create(name: Faker::Lorem.word, description: Faker::Lorem.sentence, user_id: (1..20).to_a.sample)
-end
+# 20.times do
+# 	Change.create(name: Faker::Lorem.word, description: Faker::Lorem.sentence, user_id: (1..20).to_a.sample)
+# end
 
-350.times do
-	Vote.create(upvote: true, change_id: (1..20).to_a.sample) 
-end 
+# 350.times do
+# 	Vote.create(upvote: true, change_id: (1..20).to_a.sample) 
+# end 
 
-50.times do
-	Vote.create( upvote: false, change_id: (1..20).to_a.sample ) 
-end
+# 50.times do
+# 	Vote.create( upvote: false, change_id: (1..20).to_a.sample ) 
+# end
 
 
 # require 'net/http'
