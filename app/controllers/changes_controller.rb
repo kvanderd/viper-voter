@@ -2,11 +2,13 @@ class ChangesController < ApplicationController
 
   def new
     @change = Change.new
+    @categories = Category.all
   end
 
   def create
+    puts "this is the create changes" * 9
+    ap params
 		@change = Change.create(change_params)
-    @change.state_id = find_state
 		@change.user_id = session[:user_id]
 		@change.save!
 		redirect_to change_path(@change.id)

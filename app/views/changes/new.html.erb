@@ -10,20 +10,28 @@
 		<%= t.label :description %>
 		<%= t.text_area :description, class: "form-control" %>
 	</div>
-		<div class="form-group">
-			 <%= text_field_tag :search, params[:search], size: 30, class: "form-control", required: true, placeholder: "Search by Topic" %>
-		<%# t.label :state %>
-		<%# t.text_field :state_id, class: "form-control" %>
-	</div>
 	<div class="form-group btn-file">
 	 <%= t.file_field :picture %>
 	</div>
-	<%= t.submit class: "btn btn-default"%>
+
+<h3>Topics</h3>
+	<% for category in @categories -%>
+	 <div class="checkbox checkbox-inline">
+		<%# label_tag(category.name) %>
+		<p><%= check_box_tag(category.name) %> <%= category.name %></p>
+	</div>
+	<% end %>
+
+	<p><%= t.submit class: "btn btn-default"%></p>
 	<% end %>
 </div>
+	<div class="col-md-6">
+		<h3 class="text-center">Preview</h3>
+		<h2><div id="name"></div></h2>
+		<div id="description"></div>
+
+	</div>
 </div>
 
-
-
-
 <!-- upload an image -->
+

@@ -5,6 +5,7 @@ class Change < ActiveRecord::Base
 
   has_many :categorizations
   has_many :categories, through: :categorizations
+  accepts_nested_attributes_for :categories
 	mount_uploader :picture, PictureUploader
 
 
