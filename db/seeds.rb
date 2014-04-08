@@ -104,6 +104,8 @@ require 'faker'
 # http://www.dumblaws.com/law/1554
 
 
-
+3.times do 
+	Change.create(name: "kiss")
+end
 
 

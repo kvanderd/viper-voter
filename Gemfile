@@ -76,3 +76,4 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # Use debugger
 gem 'debugger'
 gem 'rack-mini-profiler'
+gem 'rails_12factor', group: :production
