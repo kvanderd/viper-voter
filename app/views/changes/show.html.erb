@@ -9,8 +9,13 @@
 
 	<!-- <p><button>Follow Topic</button></p> -->
 	<%= image_tag @change.picture_url(:large) %>
+
+	<% @change.categories.each do |cat| %>
+		<%= cat.name %>,
+	<% end %>
   </div>
 </div>
+
 
 <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="box_count"></div>
 <a href="https://twitter.com/share" class="twitter-share-button" data-via="kvanderd">Tweet</a>

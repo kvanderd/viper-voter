@@ -1,4 +1,4 @@
 class Categorization < ActiveRecord::Base
-	has_many :categories
-	has_many :changes
+	belongs_to :category
+	belongs_to :change
 end

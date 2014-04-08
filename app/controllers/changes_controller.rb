@@ -2,13 +2,15 @@ class ChangesController < ApplicationController
 
   def new
     @change = Change.new
+    @change.categorizations.build
     @categories = Category.all
   end
 
   def create
-    puts "this is the create changes" * 9
-    ap params
 		@change = Change.create(change_params)
+    params["change"]["category_id"].each do |num|
+      Categorization.create(change_id: @change.id, category_id: num)
+    end
 		@change.user_id = session[:user_id]
 		@change.save!
 		redirect_to change_path(@change.id)
@@ -16,16 +18,15 @@ class ChangesController < ApplicationController
 
 
   def show
-  	@change = Change.find(params[:id])
+    @change = Change.joins(:categories).find(params[:id])
     @aggregate_votes = @change.aggregate
-    # @aggregate_votes = @change.votes.aggregate_votes(@change.id)
   	@vote = Vote.new
   end
 
 
 private
   def change_params
-    params.require(:change).permit(:name, :description, :picture, :user_id, :state_id)
+    params.require(:change).permit! #(:name, :description, :picture, :user_id, :state_id, :category_id)
   end
 
   def find_state
