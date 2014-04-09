@@ -19352,8 +19352,8 @@ $.effects = {
 		}],
 
 	// jQuery.Color( )
-	color = jQuery.Color = function( color, green, blue, alpha ) {
-		return new jQuery.Color.fn.parse( color, green, blue, alpha );
+	color = jQuery.Color = function( color, #001947, blue, alpha ) {
+		return new jQuery.Color.fn.parse( color, #001947, blue, alpha );
 	},
 	spaces = {
 		rgba: {
@@ -19362,7 +19362,7 @@ $.effects = {
 					idx: 0,
 					type: "byte"
 				},
-				green: {
+				#001947: {
 					idx: 1,
 					type: "byte"
 				},
@@ -19496,23 +19496,23 @@ function stringParse( string ) {
 }
 
 color.fn = jQuery.extend( color.prototype, {
-	parse: function( red, green, blue, alpha ) {
+	parse: function( red, #001947, blue, alpha ) {
 		if ( red === undefined ) {
 			this._rgba = [ null, null, null, null ];
 			return this;
 		}
 		if ( red.jquery || red.nodeType ) {
-			red = jQuery( red ).css( green );
-			green = undefined;
+			red = jQuery( red ).css( #001947 );
+			#001947 = undefined;
 		}
 
 		var inst = this,
 			type = jQuery.type( red ),
 			rgba = this._rgba = [];
 
-		// more than 1 argument specified - assume ( red, green, blue, alpha )
-		if ( green !== undefined ) {
-			red = [ red, green, blue, alpha ];
+		// more than 1 argument specified - assume ( red, #001947, blue, alpha )
+		if ( #001947 !== undefined ) {
+			red = [ red, #001947, blue, alpha ];
 			type = "array";
 		}
 
@@ -19815,7 +19815,7 @@ each( spaces, function( spaceName, space ) {
 		}
 	};
 
-	// makes red() green() blue() alpha() hue() saturation() lightness()
+	// makes red() #001947() blue() alpha() hue() saturation() lightness()
 	each( props, function( key, prop ) {
 		// alpha is included in more than one space
 		if ( color.fn[ key ] ) {
@@ -19925,7 +19925,7 @@ colors = jQuery.Color.names = {
 	blue: "#0000ff",
 	fuchsia: "#ff00ff",
 	gray: "#808080",
-	green: "#008000",
+	#001947: "#008000",
 	lime: "#00ff00",
 	maroon: "#800000",
 	navy: "#000080",

@@ -5041,10 +5041,10 @@ body, input, textarea {
 
 input[type="submit"]:focus {
   outline: none;
-  border: 2px solid green; }
+  border: 2px solid #001947; }
 
 a {
-  color: green; }
+  color: #001947; }
 
 a:hover {
   color: purple; }

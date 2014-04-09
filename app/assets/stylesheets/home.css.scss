@@ -1,14 +1,16 @@
 .intro-box {
-  border: 1px solid white;
-  background-color: white;
   letter-spacing: 2px;
-  margin: 0px 40px 0px 40px;
-  opacity: .8;
-  border-radius: 5px;
+  margin-top: 25px;
 }
 
-.main-intro {
-	background-color: #7EBF3D;
-	padding: 10px 0px 10px 0px;
-	border-radius: 5px;
+.change_wrapper {
+	border: 10px solid #F8F8FF;
+	border-radius: 1em;
 }
+
+.change_wrapper img {
+  border: 10px solid #F8F8FF;
+  border-radius: 1em;
+}
+
+.change_wrapper:hover {border: 10px solid #001947;}

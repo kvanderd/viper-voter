@@ -1,19 +1,19 @@
 <h3 class="text-center">Trending</h3>
 
-<br />
 <div class="row">
 
 		<% @changes.each do |change| %>
 		
-		<div class="col-md-3 intro-box text-center" id="<%= change.id %>">
-			<p ><%= link_to "#{change.name.upcase}", change_path(change.id) %></p>
-			<p> <%= link_to "Created By: #{change.user.username}", user_path(change.user_id) if change.user %>
-			<p><%= image_tag change.picture_url(:thumb) %></p>
-			<p class="voted"><%= link_to 'up', votes_path(vote: {upvote: true, change_id: change.id} ), :method => :post, remote: true  %> |
-			<%= link_to 'down', votes_path(vote: { upvote: false, change_id: change.id }), :method => :post, remote: true %></p>
+		<div class="col-md-4 intro-box text-center" id="<%= change.id %>">
+			<div class="change_wrapper">
+				<p ><%=link_to truncate(change.name, :length => 27), change_path(change.id) %></p>
+				<p> <%= link_to "Created By: #{change.user.username}", user_path(change.user_id) if change.user %>
+				<p><%= image_tag change.picture_url(:thumb) if change.picture.url %></p>
+				<p class="voted"><%= link_to 'up', votes_path(vote: {upvote: true, change_id: change.id} ), :method => :post, remote: true  %> |
+				<%= link_to 'down', votes_path(vote: { upvote: false, change_id: change.id }), :method => :post, remote: true %></p>
 
-			<p class="votes">Total Votes: <%= change.aggregate %></p>
-			
+				<p class="votes">Total Votes: <%= change.aggregate %></p>
+			</div>
 		</div>
 		<% end %>
 </div>

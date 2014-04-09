@@ -62,6 +62,8 @@ group :test, :development do
   gem 'quiet_assets'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'debugger'
+  gem 'rack-mini-profiler'
 end
 
 # Use ActiveModel has_secure_password
@@ -74,6 +76,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'capistrano', group: :development
 
 # Use debugger
-gem 'debugger'
-gem 'rack-mini-profiler'
+
 gem 'rails_12factor', group: :production
