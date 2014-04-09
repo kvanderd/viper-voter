@@ -63,7 +63,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'debugger'
-  gem 'rack-mini-profiler'
+  # gem 'rack-mini-profiler'
 end
 
 # Use ActiveModel has_secure_password
