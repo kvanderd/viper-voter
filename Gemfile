@@ -77,4 +77,4 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use debugger
 
-gem 'rails_12factor', group: :production
+gem 'rails_12factor'
