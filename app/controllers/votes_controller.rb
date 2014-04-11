@@ -1,5 +1,8 @@
 class VotesController < ApplicationController
 
+  def index
+  end
+
 
   def create
     ap params
