@@ -19,6 +19,7 @@ Opinion::Application.routes.draw do
 
   resources :states 
 
+  post '/create' => 'vote#create' 
 
 
   # Example of regular route:
