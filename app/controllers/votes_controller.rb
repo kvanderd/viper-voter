@@ -1,11 +1,7 @@
 class VotesController < ApplicationController
 
-  def index
-  end
-
 
   def create
-    ap params
   	@vote = Vote.create(vote_params)
   	@aggregate_votes = Vote.aggregate_votes(@vote.change_id)
 		  	respond_to do |format|
