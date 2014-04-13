@@ -11,7 +11,8 @@ gem 'pg'
 # gem 'rest-client'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
+gem "sass", "~> 3.2.5"
 gem 'bootstrap-sass'
 
 # Use Uglifier as compressor for JavaScript assets
