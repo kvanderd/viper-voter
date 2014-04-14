@@ -1,14 +1,24 @@
+<h3 class="text-center"><%= @change.name %></h3>
+
 <div class="row">
-	<div class=" text-center"
-	<p><%= link_to "Created by: #{@change.user.username}", user_path(@change.user.id) if current_user %></p>
-	<h2><%= @change.name %></h2>
-	<p><%= @change.description %></p>
-	<p class="voted"><%= link_to 'upvote', votes_path(vote: {upvote: true, change_id: @change.id} ), :method => :post, remote: true  %> |
-	<%= link_to 'downvote', votes_path(vote: { upvote: false, change_id: @change.id} ), :method => :post, remote: true %></p>
-	<p class="votes">Total Votes: <%= @aggregate_votes %></p>
+		
+		<div class="span8 intro-box text-center" id="<%= @change.id %>">
+			<div class="change_wrapper">
+				<h6 ><%=link_to @change.name %></h6>
+				<p ><%=link_to @change.description %></p>
+				<p> <%= link_to "Created By: #{@change.user.username}", user_path(@change.user_id) if @change.user %>
+				<p><%= image_tag @change.picture_url(:large) if @change.picture.url %></p>
+				<p class="voted"><%= link_to 'up', votes_path(vote: {upvote: true, change_id: @change.id} ), :method => :post, remote: true  %> |
+				<%= link_to 'down', votes_path(vote: { upvote: false, change_id: @change.id }), :method => :post, remote: true %>
+			</p>
+
+				<p class="votes">Total Votes: <%= @change.aggregate %></p>
+			</div>
+		</div>
+</div>
+
 
 	<!-- <p><button>Follow Topic</button></p> -->
-	<%= image_tag @change.picture_url(:large) %>
 <h3>Categories</h3>
 	<% @change.categories.each do |cat| %>
 		<%= cat.name %>,

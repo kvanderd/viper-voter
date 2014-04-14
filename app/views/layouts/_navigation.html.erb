@@ -2,15 +2,15 @@
 	<%= link_to image_tag("logo-opinion.png"), root_path, class: "navbar-brand img-responsive" %>
 <ul class="nav navbar-nav pull-right">
   <li><%= link_to 'Create Campaign', new_change_path %></li>
-  <li><%= link_to 'About', about_path %></li>
 	<% if current_user %>
-	  <li><%= link_to 'Logout', session_path(current_user), :method => :delete %></h2>
      <li><%= link_to "Profile", user_path(current_user) %></li>
+	  <li><%= link_to 'Logout', session_path(current_user), :method => :delete %></h2>
 	  </li>
 	  <% else %>
 	<li><%= link_to "create account", new_user_path %></li>
 	<li><%= link_to "login", new_session_path %></li>
 	<% end %>
+	 <li><%= link_to 'About', about_path %></li>
 </ul>
 </div>
 </nav>

@@ -27,12 +27,12 @@
 
 # require 'net/http'
 # require "uri"
-# require "csv"
+require "csv"
 
 # # seed the state file through csv
-# CSV.foreach("state_data.csv", headers: true) do |row|
-# 	State.create(name: row.field('name'), abbreviation: row.field('abbreviation') )
-# end
+CSV.foreach("state_data.csv", headers: true) do |row|
+	State.create(name: row.field('name'), abbreviation: row.field('abbreviation') )
+end
 # states = State.all
 # creates cities and associates their states
 # CSV.foreach("cities.csv", headers: true) do |row|
@@ -104,8 +104,6 @@
 # http://www.dumblaws.com/law/1554
 
 
-3.times do 
-	Change.create(name: "kiss")
-end
+
 
 

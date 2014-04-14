@@ -19,8 +19,6 @@ class ChangesController < ApplicationController
 
   def show
     @change = Change.joins(:categories).find(params[:id])
-    @aggregate_votes = @change.aggregate
-  	@vote = Vote.new
   end
 
 

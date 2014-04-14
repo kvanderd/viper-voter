@@ -1,7 +1,12 @@
 class Vote < ActiveRecord::Base
 
-has_many :changes
-has_many :users, through: :change
+# has_many :changes
+# has_many :users, through: :change
+
+
+	belongs_to :change
+	belongs_to :user
+
 
 #delete this?
 	def self.aggregate_votes(change_id)

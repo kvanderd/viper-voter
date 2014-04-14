@@ -7,8 +7,8 @@
 				<%= t.text_field :username, class: "form-control", required: true %>
 			</div>
 			<div class="form-group">
-			 <%= t.label :state %>
-			 <%= t.text_field :state, class: "form-control", required: true %>
+			 <%= t.label :state %> : <a class="text-right" data-toggle="tooltip" title="Social Media Contacts for State Congress">why?</a>
+			 <%= text_field_tag :search, params[:search], size: 30, class: "form-control", required: true, placeholder: "Search By State" %>
 			</div>
 			<div class="form-group">
 			<%= t.label :password %>

@@ -10,7 +10,8 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.create(user_params)
-		if @user.save
+		@user.state_id = State.find_by_name(params[:search])
+		if @user.save!
 			login(@user)
 			flash[:notice] = "Success"
 			redirect_to :root
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
 	 private
 
   def user_params
-    params.require(:user).permit(:username, :password_digest, :password, :password_confirmation, :id)
+    params.require(:user).permit(:username, :password_digest, :password, :password_confirmation, :id, :state_id)
   end
 
 end

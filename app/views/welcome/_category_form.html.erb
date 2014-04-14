@@ -1,13 +1,17 @@
-<div class="row">
-	<div class="col-sm-6 col-sm-offset-4 ">
-		<div class="form-inline">
-			<%= form_tag category_path(1), :html => {:role => "form"}, method: :get do %>
-			<div class="form-group">
-			  <%= text_field_tag :search, params[:search], size: 30, class: "form-control", autofocus: true, required: true, placeholder: "Search By Topic" %>
-			  <%= submit_tag "Search", class: "btn btn-default" %>
-	    </div>
-			<% end %>
-		</div>
 
+
+<div class="row text-left">
+	<div class="col-sm-8 col-sm-offset-2 ">
+	<!-- 	<div class="form-inline">
+			<%# form_tag category_path(1), :html => {:role => "form"}, method: :get do %>
+			<div class="form-group">
+			  <%# text_field_tag :search, params[:search], size: 30, class: "form-control", autofocus: true, required: true, placeholder: "Search By Topic" %>
+			  <%# submit_tag "Search", class: "btn btn-default" %>
+	    </div>
+			<%# end %>
+		</div> -->
+<% @categories.each do |cat| %>
+	<%= link_to cat.name.upcase, category_path(cat.id) %> <div class="glyphicon glyphicon-star-empty"></div>
+<% end %>
 	</div>
 </div>
