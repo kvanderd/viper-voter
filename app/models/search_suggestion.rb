@@ -7,12 +7,12 @@ class SearchSuggestion < ActiveRecord::Base
 	end
 
 
-  def self.index_categories
-    Category.find_each do |topic|
-      index_term(topic.name)
-      topic.name.split.each { |t| index_term(t) }
-    end
-  end
+  # def self.index_categories
+  #   Category.find_each do |topic|
+  #     index_term(topic.name)
+  #     topic.name.split.each { |t| index_term(t) }
+  #   end
+  # end
 
   def self.index_states
     State.find_each do |state|
