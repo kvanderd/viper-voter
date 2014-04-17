@@ -9,3 +9,16 @@
 </div>
 <% end %>
 </div>
+
+<div class="row">
+<% @user.state.senates.each do |senator| %>
+<div class="ol-md-4">
+	<p>Name: <%= senator.first_name %> <%= senator.last_name %></p>
+	<p>Party: <%= senator.party %></p>
+	<p><%= link_to "Twitter", "https://www.facebook.com/#{senator.twiter}" %></p>
+	<p><%= link_to "Facebook", "https://www.facebook.com/#{senator.facebook}" %></p>
+</div>
+<% end %>
+
+</div>
+<!-- t.string :first_name, :last_name, :middle_name, :party, :twiter, :facebook, :contact, :phone, :youtub_id, :website, :gender, :term_start, :term_end -->

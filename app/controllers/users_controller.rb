@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		state = State.find(@user.state_id)
 	end
 
 	def new
@@ -10,7 +11,8 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.create(user_params)
-		@user.state_id = State.find_by_name(params[:search])
+		state = State.find_by_name(params[:search].capitalize)
+		@user.state_id = state.id
 		if @user.save!
 			login(@user)
 			flash[:notice] = "Success"

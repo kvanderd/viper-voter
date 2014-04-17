@@ -1,9 +1,8 @@
 <h3 class="text-center"><%= @change.name %></h3>
 
 <div class="row">
-		
-		<div class="span8 intro-box text-center" id="<%= @change.id %>">
-			<div class="change_wrapper">
+	<div class="span8 intro-box text-center" id="<%= @change.id %>">
+		<div class="change_wrapper">
 				<h6 ><%=link_to @change.name %></h6>
 				<p ><%=link_to @change.description %></p>
 				<p> <%= link_to "Created By: #{@change.user.username}", user_path(@change.user_id) if @change.user %>
@@ -13,20 +12,34 @@
 			</p>
 
 				<p class="votes">Total Votes: <%= @change.aggregate %></p>
-			</div>
 		</div>
+	</div>
 </div>
 
-
-	<!-- <p><button>Follow Topic</button></p> -->
+<div class="row text-center">
 <h3>Categories</h3>
 	<% @change.categories.each do |cat| %>
-		<%= cat.name %>,
+		<div class="glyphicon glyphicon-star-empty"></div><%= cat.name %>
 	<% end %>
-  </div>
+<div class="row">
+	<h3 >Tell Your <%= current_user.state.name %> Representatives</h3>
+
+	<% current_user.state.senates.each do |senator| %>
+	<div class="col-md-6">
+		<p>Name: <%= senator.first_name %> <%= senator.last_name %></p>
+		<p>Party: <%= senator.party %></p>
+		<p><%= link_to "Twitter", "https://www.facebook.com/#{senator.twiter}" %>
+		<%= link_to "Facebook", "https://www.facebook.com/#{senator.facebook}" %></p>
+	</div>
+	<% end %>
+
 </div>
-
-
+<div class="row text-center">
+	<h3>Share with your friends</h3>
+	<div class="col-mid-12">
 <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="box_count"></div>
 <a href="https://twitter.com/share" class="twitter-share-button" data-via="kvanderd">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+	</div>
+</div>
