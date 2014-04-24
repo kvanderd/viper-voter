@@ -12,5 +12,12 @@
 2. Everything else should use change
 
 
-2. Command for Search
-3. Command for image upload
+2. Command for Search :: rake search_suggestions:index
+3. Command for image upload ::
+
+
+1. Check associations
+2. Seed the database with one command
+3. Tests && Validations
+4. Done
+5. User voting.

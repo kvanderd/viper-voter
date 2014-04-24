@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-8 col-md-offset-2">
 		<%= form_for @user, :html => {:role => "form"} do |t| %>
 		 <%= render "shared/error_messages", :target => @user %>
 		   <div class="form-group">
@@ -7,7 +7,7 @@
 				<%= t.text_field :username, class: "form-control", required: true %>
 			</div>
 			<div class="form-group">
-			 <%= t.label :state %> : <a class="text-right" data-toggle="tooltip" title="Social Media Contacts for State Congress">why?</a>
+			<%= t.label :state %> : <a data-toggle="tooltip" data-placement="top" title="Social Media Contacts for State Congress">why?</a> 
 			 <%= text_field_tag :search, params[:search], size: 30, class: "form-control", required: true, placeholder: "Search By State" %>
 			</div>
 			<div class="form-group">
@@ -22,7 +22,5 @@
 			<%= t.submit class: "btn btn-default" %>
 		<% end %>
 	</div>
-	<div class="col-md-4">
-		<h3></h3>
-	</div>
 </div>
+

@@ -29,6 +29,19 @@ require 'net/http'
 require "uri"
 require "csv"
 
+Category.create(name: "Human Rights")
+Category.create(name: "Education")
+Category.create(name: "Global Economy")
+Category.create(name: "Pentagon Spending")
+Category.create(name: "Energy")
+Category.create(name: "Climate")
+
+
+Party.create(name: "Democratic")
+Party.create(name: "Republican")
+Party.create(name: "Independent")
+
+
 # # # seed the state file through csv
 CSV.foreach("state_data.csv", headers: true) do |row|
 	State.create(name: row.field('name'), abbreviation: row.field('abbreviation') )
@@ -77,14 +90,13 @@ states.each do |state|
        s.office_term_id = o
        s.save!
 
-
 			party = hash["party"]
 			if party = "D"
 				s.party_id = 1
 			elsif party = "R"
-				s.party_id = 3
+				s.party_id = 2
 			else
-				s.party_id  = 2
+				s.party_id  = 3
 			end
 			s.save!
 	 end
