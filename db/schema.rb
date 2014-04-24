@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140402150859) do
+ActiveRecord::Schema.define(version: 20140424031631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,23 +36,34 @@ ActiveRecord::Schema.define(version: 20140402150859) do
     t.datetime "updated_at"
   end
 
+  create_table "contacts", force: true do |t|
+    t.string "twiter"
+    t.string "facebook"
+    t.string "form"
+    t.string "phone"
+    t.string "youtub_id"
+    t.string "website"
+  end
+
   create_table "houses", force: true do |t|
     t.string  "first_name"
     t.string  "last_name"
     t.string  "middle_name"
-    t.string  "party"
-    t.string  "twiter"
-    t.string  "facebook"
-    t.string  "contact"
-    t.string  "phone"
-    t.string  "youtub_id"
-    t.string  "website"
     t.string  "gender"
-    t.string  "term_start"
-    t.string  "term_end"
-    t.boolean "in_office"
     t.integer "state_id"
     t.integer "party_id"
+    t.integer "contact_id"
+    t.integer "term_id"
+  end
+
+  create_table "office_terms", force: true do |t|
+    t.boolean "in_office"
+    t.date    "term_start"
+    t.date    "term_end"
+  end
+
+  create_table "parties", force: true do |t|
+    t.string "name"
   end
 
   create_table "search_suggestions", force: true do |t|
@@ -65,19 +76,9 @@ ActiveRecord::Schema.define(version: 20140402150859) do
   create_table "senates", force: true do |t|
     t.string  "first_name"
     t.string  "last_name"
-    t.string  "middle_name"
-    t.string  "party"
-    t.string  "twiter"
-    t.string  "facebook"
-    t.string  "contact"
-    t.string  "phone"
-    t.string  "youtub_id"
-    t.string  "website"
-    t.string  "gender"
-    t.string  "term_start"
-    t.string  "term_end"
-    t.boolean "in_office"
     t.integer "state_id"
+    t.integer "contact_id"
+    t.integer "office_term_id"
     t.integer "party_id"
   end
 

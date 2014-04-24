@@ -12,7 +12,8 @@ class Change < ActiveRecord::Base
 
 	mount_uploader :picture, PictureUploader
 
-
+  # validates_inclusion_of :format, in: %w( jpg gif png ), message: "extension %{value} is not included in the list"
+  # validates_length_of :username, minimum: 3, too_short: 'please enter at least 3 characters'
 
 	def trending_algorithm(gravity = 1.8)
 		# For a given change

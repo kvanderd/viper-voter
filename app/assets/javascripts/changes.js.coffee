@@ -3,5 +3,5 @@ $ ->
 		$("#name").text($(this).val());
 	$("#change_description").keyup ->
 		$("#description").text($(this).val());
-		# kiss = $("#change_name").val()
+		# kiss = $("#opinion_name").val()
 		# $("#name").prepend(kiss)

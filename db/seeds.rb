@@ -25,14 +25,14 @@
 # end
 
 
-# require 'net/http'
-# require "uri"
+require 'net/http'
+require "uri"
 require "csv"
 
-# # seed the state file through csv
-# CSV.foreach("state_data.csv", headers: true) do |row|
-# 	State.create(name: row.field('name'), abbreviation: row.field('abbreviation') )
-# end
+# # # seed the state file through csv
+CSV.foreach("state_data.csv", headers: true) do |row|
+	State.create(name: row.field('name'), abbreviation: row.field('abbreviation') )
+end
 states = State.all
 # creates cities and associates their states
 # CSV.foreach("cities.csv", headers: true) do |row|
@@ -51,18 +51,42 @@ states.each do |state|
 	love = @http.request(kiss)
 	JSON.parse(love.body)["results"].each do |hash|
 		 JSON.parse(love.body)["count"].to_i.times do
-			Senate.create(state_id: state.id, 
+
+
+			s = Senate.create(state_id: state.id, 
 			              first_name: hash["first_name"], 
-			              last_name: hash["last_name"],
+			              last_name: hash["last_name"])
+
+
+			c = Contact.create(
 			              twiter: hash["twitter_id"],
 			              facebook: hash["facebook_id"],
-			              contact: hash["contact_form"],
-			              phone: hash["phone"],
-			              party: hash["party"],
-			              gender: hash["gender"],
+			              form: hash["contact_form"],
+			              phone: hash["phone"]
+			              )
+        c.save!
+        s.contact_id = c.id
+        s.save!
+
+			o = OfficeTerm.create(		             
 			              in_office: hash["in_office"],
 			              term_end: hash["term_end"],
-			              term_start: hash["term_start"])
+			              term_start: hash["term_start"]
+			              )
+			 o.save!
+       s.office_term_id = o
+       s.save!
+
+
+			party = hash["party"]
+			if party = "D"
+				s.party_id = 1
+			elsif party = "R"
+				s.party_id = 3
+			else
+				s.party_id  = 2
+			end
+			s.save!
 	 end
 	end
 end

@@ -1,6 +1,16 @@
-1. A user can only vote once per change
-2. Hook up state with user login 
-3. When a user views a change they can see their congress people 
 4. Seed the database
+1. A user can only vote once per opinion
 5. Tests
 5. Model Validations
+
+<!-- the opinion from opinions to opinions and back is really fucking with your program. 
+
+1. Turn everything back to opinion - > change and opinions -> opinions  -->
+
+
+1. Everything that is a consider a core rails app file should use Opinion
+2. Everything else should use change
+
+
+2. Command for Search
+3. Command for image upload

@@ -2,11 +2,11 @@ class CreateChanges < ActiveRecord::Migration
   def change
     create_table :changes do |t|
     	t.string :name
-        t.string :summary
+      t.string :summary
     	t.text :description
     	t.string :picture
     	t.belongs_to :user
-        t.belongs_to :category
+      t.belongs_to :category
     	t.timestamps
     end
   end

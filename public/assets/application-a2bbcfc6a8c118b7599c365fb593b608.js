@@ -3045,7 +3045,7 @@ function createOptions( options ) {
 /*
  * Create a callback list using the following parameters:
  *
- *	options: an optional list of space-separated options that will change how
+ *	options: an optional list of space-separated options that will opinion how
  *			the callback list behaves or a more traditional option object
  *
  * By default a callback list will act like an event callback list and can be
@@ -3439,7 +3439,7 @@ function detach() {
 		window.removeEventListener( "load", completed, false );
 
 	} else {
-		document.detachEvent( "onreadystatechange", completed );
+		document.detachEvent( "onreadystateopinion", completed );
 		window.detachEvent( "onload", completed );
 	}
 }
@@ -3478,7 +3478,7 @@ jQuery.ready.promise = function( obj ) {
 		// If IE event model is used
 		} else {
 			// Ensure firing before onload, maybe late but safe also for iframes
-			document.attachEvent( "onreadystatechange", completed );
+			document.attachEvent( "onreadystateopinion", completed );
 
 			// A fallback to window.onload, that will always work
 			window.attachEvent( "onload", completed );
@@ -3628,13 +3628,13 @@ function dataAttr( elem, key, data ) {
 				data = data === "true" ? true :
 					data === "false" ? false :
 					data === "null" ? null :
-					// Only convert to a number if it doesn't change the string
+					// Only convert to a number if it doesn't opinion the string
 					+data + "" === data ? +data :
 					rbrace.test( data ) ? jQuery.parseJSON( data ) :
 					data;
 			} catch( e ) {}
 
-			// Make sure we set the data so it isn't changed later
+			// Make sure we set the data so it isn't opiniond later
 			jQuery.data( elem, key, data );
 
 		} else {
@@ -4214,8 +4214,8 @@ var rcheckableType = (/^(?:checkbox|radio)$/i);
 	var i, eventName,
 		div = document.createElement( "div" );
 
-	// Support: IE<9 (lack submit/change bubble), Firefox 23+ (lack focusin event)
-	for ( i in { submit: true, change: true, focusin: true }) {
+	// Support: IE<9 (lack submit/opinion bubble), Firefox 23+ (lack focusin event)
+	for ( i in { submit: true, opinion: true, focusin: true }) {
 		eventName = "on" + i;
 
 		if ( !(support[ i + "Bubbles" ] = eventName in window) ) {
@@ -4310,7 +4310,7 @@ jQuery.event = {
 				continue;
 			}
 
-			// If event changes its type, use the special event handlers for the changed type
+			// If event opinions its type, use the special event handlers for the opiniond type
 			special = jQuery.event.special[ type ] || {};
 
 			// If selector defined, determine special event api type, otherwise given type
@@ -5048,44 +5048,44 @@ if ( !support.submitBubbles ) {
 	};
 }
 
-// IE change delegation and checkbox/radio fix
-if ( !support.changeBubbles ) {
+// IE opinion delegation and checkbox/radio fix
+if ( !support.opinionBubbles ) {
 
-	jQuery.event.special.change = {
+	jQuery.event.special.opinion = {
 
 		setup: function() {
 
 			if ( rformElems.test( this.nodeName ) ) {
-				// IE doesn't fire change on a check/radio until blur; trigger it on click
-				// after a propertychange. Eat the blur-change in special.change.handle.
-				// This still fires onchange a second time for check/radio after blur.
+				// IE doesn't fire opinion on a check/radio until blur; trigger it on click
+				// after a propertyopinion. Eat the blur-opinion in special.opinion.handle.
+				// This still fires onopinion a second time for check/radio after blur.
 				if ( this.type === "checkbox" || this.type === "radio" ) {
-					jQuery.event.add( this, "propertychange._change", function( event ) {
+					jQuery.event.add( this, "propertyopinion._opinion", function( event ) {
 						if ( event.originalEvent.propertyName === "checked" ) {
-							this._just_changed = true;
+							this._just_opiniond = true;
 						}
 					});
-					jQuery.event.add( this, "click._change", function( event ) {
-						if ( this._just_changed && !event.isTrigger ) {
-							this._just_changed = false;
+					jQuery.event.add( this, "click._opinion", function( event ) {
+						if ( this._just_opiniond && !event.isTrigger ) {
+							this._just_opiniond = false;
 						}
-						// Allow triggered, simulated change events (#11500)
-						jQuery.event.simulate( "change", this, event, true );
+						// Allow triggered, simulated opinion events (#11500)
+						jQuery.event.simulate( "opinion", this, event, true );
 					});
 				}
 				return false;
 			}
-			// Delegated event; lazy-add a change handler on descendant inputs
-			jQuery.event.add( this, "beforeactivate._change", function( e ) {
+			// Delegated event; lazy-add a opinion handler on descendant inputs
+			jQuery.event.add( this, "beforeactivate._opinion", function( e ) {
 				var elem = e.target;
 
-				if ( rformElems.test( elem.nodeName ) && !jQuery._data( elem, "changeBubbles" ) ) {
-					jQuery.event.add( elem, "change._change", function( event ) {
+				if ( rformElems.test( elem.nodeName ) && !jQuery._data( elem, "opinionBubbles" ) ) {
+					jQuery.event.add( elem, "opinion._opinion", function( event ) {
 						if ( this.parentNode && !event.isSimulated && !event.isTrigger ) {
-							jQuery.event.simulate( "change", this.parentNode, event, true );
+							jQuery.event.simulate( "opinion", this.parentNode, event, true );
 						}
 					});
-					jQuery._data( elem, "changeBubbles", true );
+					jQuery._data( elem, "opinionBubbles", true );
 				}
 			});
 		},
@@ -5093,14 +5093,14 @@ if ( !support.changeBubbles ) {
 		handle: function( event ) {
 			var elem = event.target;
 
-			// Swallow native change events from checkbox/radio, we already triggered them above
+			// Swallow native opinion events from checkbox/radio, we already triggered them above
 			if ( this !== elem || event.isSimulated || event.isTrigger || (elem.type !== "radio" && elem.type !== "checkbox") ) {
 				return event.handleObj.handler.apply( this, arguments );
 			}
 		},
 
 		teardown: function() {
-			jQuery.event.remove( this, "._change" );
+			jQuery.event.remove( this, "._opinion" );
 
 			return !rformElems.test( this.nodeName );
 		}
@@ -5836,7 +5836,7 @@ jQuery.fn.extend({
 	replaceWith: function() {
 		var arg = arguments[ 0 ];
 
-		// Make the changes, replacing each context element with the new content
+		// Make the opinions, replacing each context element with the new content
 		this.domManip( arguments, function( elem ) {
 			arg = this.parentNode;
 
@@ -6078,7 +6078,7 @@ function defaultDisplay( nodeName ) {
 
 			body.appendChild( container ).appendChild( div );
 
-			// Will be changed later if needed.
+			// Will be opiniond later if needed.
 			shrinkWrapBlocksVal = false;
 
 			if ( typeof div.style.zoom !== strundefined ) {
@@ -6144,7 +6144,7 @@ if ( window.getComputedStyle ) {
 				style.minWidth = style.maxWidth = style.width = ret;
 				ret = computed.width;
 
-				// Revert the changed values
+				// Revert the opiniond values
 				style.width = width;
 				style.minWidth = minWidth;
 				style.maxWidth = maxWidth;
@@ -6196,7 +6196,7 @@ if ( window.getComputedStyle ) {
 			style.left = name === "fontSize" ? "1em" : ret;
 			ret = style.pixelLeft + "px";
 
-			// Revert the changed values
+			// Revert the opiniond values
 			style.left = left;
 			if ( rsLeft ) {
 				rs.left = rsLeft;
@@ -6407,7 +6407,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 			boxSizingVal = div.offsetWidth === 4;
 		});
 
-		// Will be changed later if needed.
+		// Will be opiniond later if needed.
 		boxSizingReliableVal = true;
 		pixelPositionVal = false;
 		reliableMarginRightVal = true;
@@ -7075,7 +7075,7 @@ var
 
 				do {
 					// If previous iteration zeroed out, double until we get *something*
-					// Use a string for doubling factor so we don't accidentally see scale as unchanged below
+					// Use a string for doubling factor so we don't accidentally see scale as unopiniond below
 					scale = scale || ".5";
 
 					// Adjust and apply
@@ -7083,7 +7083,7 @@ var
 					jQuery.style( tween.elem, prop, start + unit );
 
 				// Update scale, tolerating zero or NaN from tween.cur()
-				// And breaking the loop if scale is unchanged or perfect, or if we've just had enough
+				// And breaking the loop if scale is unopiniond or perfect, or if we've just had enough
 				} while ( scale !== (scale = tween.cur() / target) && scale !== 1 && --maxIterations );
 			}
 
@@ -7183,7 +7183,7 @@ function defaultPrefilter( elem, props, opts ) {
 	if ( elem.nodeType === 1 && ( "height" in props || "width" in props ) ) {
 		// Make sure that nothing sneaks out
 		// Record all 3 overflow attributes because IE does not
-		// change the overflow attribute when overflowX and
+		// opinion the overflow attribute when overflowX and
 		// overflowY are set to the same value
 		opts.overflow = [ style.overflow, style.overflowX, style.overflowY ];
 
@@ -8470,7 +8470,7 @@ jQuery.fn.extend({
 
 jQuery.each( ("blur focus focusin focusout load resize scroll unload click dblclick " +
 	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
-	"change select submit keydown keypress keyup error contextmenu").split(" "), function( i, name ) {
+	"opinion select submit keydown keypress keyup error contextmenu").split(" "), function( i, name ) {
 
 	// Handle event binding
 	jQuery.fn[ name ] = function( data, fn ) {
@@ -9643,7 +9643,7 @@ if ( xhrSupported ) {
 					// For cross-domain requests, seeing as conditions for a preflight are
 					// akin to a jigsaw puzzle, we simply never set it to be sure.
 					// (it can always be set on a per-request basis or even using ajaxSetup)
-					// For same-domain requests, won't change header if already provided.
+					// For same-domain requests, won't opinion header if already provided.
 					if ( !options.crossDomain && !headers["X-Requested-With"] ) {
 						headers["X-Requested-With"] = "XMLHttpRequest";
 					}
@@ -9675,7 +9675,7 @@ if ( xhrSupported ) {
 							// Clean up
 							delete xhrCallbacks[ id ];
 							callback = undefined;
-							xhr.onreadystatechange = jQuery.noop;
+							xhr.onreadystateopinion = jQuery.noop;
 
 							// Abort manually if needed
 							if ( isAbort ) {
@@ -9731,7 +9731,7 @@ if ( xhrSupported ) {
 						setTimeout( callback );
 					} else {
 						// Add to the list of active xhr callbacks
-						xhr.onreadystatechange = xhrCallbacks[ id ] = callback;
+						xhr.onreadystateopinion = xhrCallbacks[ id ] = callback;
 					}
 				},
 
@@ -9812,12 +9812,12 @@ jQuery.ajaxTransport( "script", function(s) {
 				script.src = s.url;
 
 				// Attach handlers for all browsers
-				script.onload = script.onreadystatechange = function( _, isAbort ) {
+				script.onload = script.onreadystateopinion = function( _, isAbort ) {
 
 					if ( isAbort || !script.readyState || /loaded|complete/.test( script.readyState ) ) {
 
 						// Handle memory leak in IE
-						script.onload = script.onreadystatechange = null;
+						script.onload = script.onreadystateopinion = null;
 
 						// Remove the script
 						if ( script.parentNode ) {
@@ -11605,7 +11605,7 @@ $.widget( "ui.accordion", {
 
 		options.active = collapsing ? false : this.headers.index( clicked );
 
-		// when the call to ._toggle() comes after the class changes
+		// when the call to ._toggle() comes after the class opinions
 		// it causes a very odd bug in IE 8 (see #6720)
 		this.active = clickedIsActive ? $() : clicked;
 		this._toggle( eventData );
@@ -12771,7 +12771,7 @@ $.widget( "ui.menu", {
 		if ( newItem && newItem.length ) {
 			this._open( newItem.parent() );
 
-			// Delay so Firefox will not hide activedescendant change in expanding submenu from AT
+			// Delay so Firefox will not hide activedescendant opinion in expanding submenu from AT
 			this._delay(function() {
 				this.focus( event, newItem );
 			});
@@ -12922,7 +12922,7 @@ $.widget( "ui.autocomplete", {
 		source: null,
 
 		// callbacks
-		change: null,
+		opinion: null,
 		close: null,
 		focus: null,
 		open: null,
@@ -13021,7 +13021,7 @@ $.widget( "ui.autocomplete", {
 					break;
 				default:
 					suppressKeyPressRepeat = true;
-					// search timeout should be triggered before the input value is changed
+					// search timeout should be triggered before the input value is opiniond
 					this._searchTimeout( event );
 					break;
 				}
@@ -13075,7 +13075,7 @@ $.widget( "ui.autocomplete", {
 
 				clearTimeout( this.searching );
 				this.close( event );
-				this._change( event );
+				this._opinion( event );
 			}
 		});
 
@@ -13144,10 +13144,10 @@ $.widget( "ui.autocomplete", {
 					}
 				} else {
 					// Normally the input is populated with the item's value as the
-					// menu is navigated, causing screen readers to notice a change and
+					// menu is navigated, causing screen readers to notice a opinion and
 					// announce the item. Since the focus event was canceled, this doesn't
 					// happen, so we update the live region so that screen readers can
-					// still notice the change and announce it.
+					// still notice the opinion and announce it.
 					this.liveRegion.text( item.value );
 				}
 			},
@@ -13273,7 +13273,7 @@ $.widget( "ui.autocomplete", {
 	_searchTimeout: function( event ) {
 		clearTimeout( this.searching );
 		this.searching = this._delay(function() {
-			// only search if the value has changed
+			// only search if the value has opiniond
 			if ( this.term !== this._value() ) {
 				this.selectedItem = null;
 				this.search( null, event );
@@ -13350,9 +13350,9 @@ $.widget( "ui.autocomplete", {
 		}
 	},
 
-	_change: function( event ) {
+	_opinion: function( event ) {
 		if ( this.previous !== this._value() ) {
-			this._trigger( "change", event, { item: this.selectedItem } );
+			this._trigger( "opinion", event, { item: this.selectedItem } );
 		}
 	},
 
@@ -13615,14 +13615,14 @@ $.widget( "ui.button", {
 			});
 
 		if ( toggleButton ) {
-			this.element.bind( "change" + this.eventNamespace, function() {
+			this.element.bind( "opinion" + this.eventNamespace, function() {
 				if ( clickDragged ) {
 					return;
 				}
 				that.refresh();
 			});
 			// if mouse moves between mousedown and mouseup (drag) set clickDragged flag
-			// prevents issue where button state changes but checkbox/radio checked state
+			// prevents issue where button state opinions but checkbox/radio checked state
 			// does not in Firefox (see ticket #6970)
 			this.buttonElement
 				.bind( "mousedown" + this.eventNamespace, function( event ) {
@@ -13995,8 +13995,8 @@ function Datepicker() {
 			// if not applicable, false to just disable them
 		navigationAsDateFormat: false, // True if date formatting applied to prev/today/next links
 		gotoCurrent: false, // True if today link goes back to current selection instead
-		changeMonth: false, // True if month can be selected directly, false if only prev/next
-		changeYear: false, // True if year can be selected directly, false if only prev/next
+		opinionMonth: false, // True if month can be selected directly, false if only prev/next
+		opinionYear: false, // True if year can be selected directly, false if only prev/next
 		yearRange: "c-10:c+10", // Range of years to display in drop-down,
 			// either relative to today's year (-nn:+nn), relative to currently displayed year
 			// (c-nn:c+nn), absolute (nnnn:nnnn), or a combination of the above (nnnn:-n)
@@ -14017,7 +14017,7 @@ function Datepicker() {
 		beforeShow: null, // Function that takes an input field and
 			// returns a set of custom settings for the date picker
 		onSelect: null, // Define a callback function when a date is selected
-		onChangeMonthYear: null, // Define a callback function when the month or year is changed
+		onChangeMonthYear: null, // Define a callback function when the month or year is opiniond
 		onClose: null, // Define a callback function when the datepicker is closed
 		numberOfMonths: 1, // Number of months to show at a time
 		showCurrentAtPos: 0, // The position in multipe months at which to show the current month (starting at 0)
@@ -14371,7 +14371,7 @@ $.extend(Datepicker.prototype, {
 	/* Update or retrieve the settings for a date picker attached to an input field or division.
 	 * @param  target  element - the target input field or division or span
 	 * @param  name	object - the new settings to update or
-	 *				string - the name of the setting to change or retrieve,
+	 *				string - the name of the setting to opinion or retrieve,
 	 *				when retrieving also "all" for all instance settings or
 	 *				"defaults" for all global defaults
 	 * @param  value   any - the new value for the setting
@@ -14402,7 +14402,7 @@ $.extend(Datepicker.prototype, {
 			minDate = this._getMinMaxDate(inst, "min");
 			maxDate = this._getMinMaxDate(inst, "max");
 			extendRemove(inst.settings, settings);
-			// reformat the old minDate/maxDate values if dateFormat changes and a new minDate/maxDate isn't provided
+			// reformat the old minDate/maxDate values if dateFormat opinions and a new minDate/maxDate isn't provided
 			if (minDate !== null && settings.dateFormat !== undefined && settings.minDate === undefined) {
 				inst.settings.minDate = this._formatDate(inst, minDate);
 			}
@@ -14424,8 +14424,8 @@ $.extend(Datepicker.prototype, {
 		}
 	},
 
-	// change method deprecated
-	_changeDatepicker: function(target, name, value) {
+	// opinion method deprecated
+	_opinionDatepicker: function(target, name, value) {
 		this._optionDatepicker(target, name, value);
 	},
 
@@ -14713,7 +14713,7 @@ $.extend(Datepicker.prototype, {
 		if( inst.yearshtml ){
 			origyearshtml = inst.yearshtml;
 			setTimeout(function(){
-				//assure that inst.yearshtml didn't change.
+				//assure that inst.yearshtml didn't opinion.
 				if( origyearshtml === inst.yearshtml && inst.yearshtml ){
 					inst.dpDiv.find("select.ui-datepicker-year:first").replaceWith(inst.yearshtml);
 				}
@@ -14723,7 +14723,7 @@ $.extend(Datepicker.prototype, {
 	},
 
 	// #6694 - don't focus the input if it's already focused
-	// this breaks the change event in IE
+	// this breaks the opinion event in IE
 	// Support: IE and jQuery <1.9
 	_shouldFocusInput: function( inst ) {
 		return inst.input && inst.input.is( ":visible" ) && !inst.input.is( ":disabled" ) && !inst.input.is( ":focus" );
@@ -14923,7 +14923,7 @@ $.extend(Datepicker.prototype, {
 		if (onSelect) {
 			onSelect.apply((inst.input ? inst.input[0] : null), [dateStr, inst]);  // trigger custom callback
 		} else if (inst.input) {
-			inst.input.trigger("change"); // fire the change event
+			inst.input.trigger("opinion"); // fire the opinion event
 		}
 
 		if (inst.inline){
@@ -15424,7 +15424,7 @@ $.extend(Datepicker.prototype, {
 
 	/* Handle switch to/from daylight saving.
 	 * Hours may be non-zero on daylight saving cut-over:
-	 * > 12 when midnight changeover, but then cannot generate
+	 * > 12 when midnight opinionover, but then cannot generate
 	 * midnight datetime, so jump to 1AM, otherwise reset.
 	 * @param  date  (Date) the date to check
 	 * @return  (Date) the corrected date
@@ -15690,19 +15690,19 @@ $.extend(Datepicker.prototype, {
 			secondary, monthNames, monthNamesShort) {
 
 		var inMinYear, inMaxYear, month, years, thisYear, determineYear, year, endYear,
-			changeMonth = this._get(inst, "changeMonth"),
-			changeYear = this._get(inst, "changeYear"),
+			opinionMonth = this._get(inst, "opinionMonth"),
+			opinionYear = this._get(inst, "opinionYear"),
 			showMonthAfterYear = this._get(inst, "showMonthAfterYear"),
 			html = "<div class='ui-datepicker-title'>",
 			monthHtml = "";
 
 		// month selection
-		if (secondary || !changeMonth) {
+		if (secondary || !opinionMonth) {
 			monthHtml += "<span class='ui-datepicker-month'>" + monthNames[drawMonth] + "</span>";
 		} else {
 			inMinYear = (minDate && minDate.getFullYear() === drawYear);
 			inMaxYear = (maxDate && maxDate.getFullYear() === drawYear);
-			monthHtml += "<select class='ui-datepicker-month' data-handler='selectMonth' data-event='change'>";
+			monthHtml += "<select class='ui-datepicker-month' data-handler='selectMonth' data-event='opinion'>";
 			for ( month = 0; month < 12; month++) {
 				if ((!inMinYear || month >= minDate.getMonth()) && (!inMaxYear || month <= maxDate.getMonth())) {
 					monthHtml += "<option value='" + month + "'" +
@@ -15714,13 +15714,13 @@ $.extend(Datepicker.prototype, {
 		}
 
 		if (!showMonthAfterYear) {
-			html += monthHtml + (secondary || !(changeMonth && changeYear) ? "&#xa0;" : "");
+			html += monthHtml + (secondary || !(opinionMonth && opinionYear) ? "&#xa0;" : "");
 		}
 
 		// year selection
 		if ( !inst.yearshtml ) {
 			inst.yearshtml = "";
-			if (secondary || !changeYear) {
+			if (secondary || !opinionYear) {
 				html += "<span class='ui-datepicker-year'>" + drawYear + "</span>";
 			} else {
 				// determine range of years to display
@@ -15736,7 +15736,7 @@ $.extend(Datepicker.prototype, {
 				endYear = Math.max(year, determineYear(years[1] || ""));
 				year = (minDate ? Math.max(year, minDate.getFullYear()) : year);
 				endYear = (maxDate ? Math.min(endYear, maxDate.getFullYear()) : endYear);
-				inst.yearshtml += "<select class='ui-datepicker-year' data-handler='selectYear' data-event='change'>";
+				inst.yearshtml += "<select class='ui-datepicker-year' data-handler='selectYear' data-event='opinion'>";
 				for (; year <= endYear; year++) {
 					inst.yearshtml += "<option value='" + year + "'" +
 						(year === drawYear ? " selected='selected'" : "") +
@@ -15751,7 +15751,7 @@ $.extend(Datepicker.prototype, {
 
 		html += this._get(inst, "yearSuffix");
 		if (showMonthAfterYear) {
-			html += (secondary || !(changeMonth && changeYear) ? "&#xa0;" : "") + monthHtml;
+			html += (secondary || !(opinionMonth && opinionYear) ? "&#xa0;" : "") + monthHtml;
 		}
 		html += "</div>"; // Close datepicker_header
 		return html;
@@ -15780,7 +15780,7 @@ $.extend(Datepicker.prototype, {
 		return (maxDate && newDate > maxDate ? maxDate : newDate);
 	},
 
-	/* Notify change of month/year. */
+	/* Notify opinion of month/year. */
 	_notifyChange: function(inst) {
 		var onChange = this._get(inst, "onChangeMonthYear");
 		if (onChange) {
@@ -15810,7 +15810,7 @@ $.extend(Datepicker.prototype, {
 		return new Date(year, month, 1).getDay();
 	},
 
-	/* Determines if we should allow a "next/prev" month display change. */
+	/* Determines if we should allow a "next/prev" month display opinion. */
 	_canAdjustMonth: function(inst, offset, curYear, curMonth) {
 		var numMonths = this._getNumberOfMonths(inst),
 			date = this._daylightSavingAdjust(new Date(curYear,
@@ -16733,7 +16733,7 @@ $.ui.plugin.add("draggable", "connectToSortable", {
 					instance: sortable,
 					shouldRevert: sortable.options.revert
 				});
-				sortable.refreshPositions();	// Call the sortable's refreshPositions at drag start to refresh the containerCache since the sortable container cache is used in drag and needs to be up to date (this will ensure it's initialised as well as being kept in step with any changes that might have happened on the page).
+				sortable.refreshPositions();	// Call the sortable's refreshPositions at drag start to refresh the containerCache since the sortable container cache is used in drag and needs to be up to date (this will ensure it's initialised as well as being kept in step with any opinions that might have happened on the page).
 				sortable._trigger("activate", event, uiSortable);
 			}
 		});
@@ -16823,7 +16823,7 @@ $.ui.plugin.add("draggable", "connectToSortable", {
 					this.instance._mouseCapture(event, true);
 					this.instance._mouseStart(event, true, true);
 
-					//Because the browser event is way off the new appended portlet, we modify a couple of variables to reflect the changes
+					//Because the browser event is way off the new appended portlet, we modify a couple of variables to reflect the opinions
 					this.instance.offset.click.top = inst.offset.click.top;
 					this.instance.offset.click.left = inst.offset.click.left;
 					this.instance.offset.parent.left -= inst.offset.parent.left - this.instance.offset.parent.left;
@@ -17425,13 +17425,13 @@ $.widget("ui.resizable", $.ui.mouse, {
 			prevHeight = this.size.height,
 			dx = (event.pageX-smp.left)||0,
 			dy = (event.pageY-smp.top)||0,
-			trigger = this._change[a];
+			trigger = this._opinion[a];
 
 		if (!trigger) {
 			return false;
 		}
 
-		// Calculate the attrs that will be change
+		// Calculate the attrs that will be opinion
 		data = trigger.apply(this, [event, dx, dy]);
 
 		// Put this in the mouseDrag handler since the user can start pressing shift while resizing
@@ -17696,7 +17696,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 
 	},
 
-	_change: {
+	_opinion: {
 		e: function(event, dx) {
 			return { width: this.originalSize.width + dx };
 		},
@@ -17712,16 +17712,16 @@ $.widget("ui.resizable", $.ui.mouse, {
 			return { height: this.originalSize.height + dy };
 		},
 		se: function(event, dx, dy) {
-			return $.extend(this._change.s.apply(this, arguments), this._change.e.apply(this, [event, dx, dy]));
+			return $.extend(this._opinion.s.apply(this, arguments), this._opinion.e.apply(this, [event, dx, dy]));
 		},
 		sw: function(event, dx, dy) {
-			return $.extend(this._change.s.apply(this, arguments), this._change.w.apply(this, [event, dx, dy]));
+			return $.extend(this._opinion.s.apply(this, arguments), this._opinion.w.apply(this, [event, dx, dy]));
 		},
 		ne: function(event, dx, dy) {
-			return $.extend(this._change.n.apply(this, arguments), this._change.e.apply(this, [event, dx, dy]));
+			return $.extend(this._opinion.n.apply(this, arguments), this._opinion.e.apply(this, [event, dx, dy]));
 		},
 		nw: function(event, dx, dy) {
-			return $.extend(this._change.n.apply(this, arguments), this._change.w.apply(this, [event, dx, dy]));
+			return $.extend(this._opinion.n.apply(this, arguments), this._opinion.w.apply(this, [event, dx, dy]));
 		}
 	},
 
@@ -19170,7 +19170,7 @@ $.ui.ddmanager = {
 	drop: function(draggable, event) {
 
 		var dropped = false;
-		// Create a copy of the droppables in case the list changes during the drop (#9116)
+		// Create a copy of the droppables in case the list opinions during the drop (#9116)
 		$.each(($.ui.ddmanager.droppables[draggable.options.scope] || []).slice(), function() {
 
 			if(!this.options) {
@@ -20046,7 +20046,7 @@ $.effects.animateClass = function( value, duration, easing, callback ) {
 			};
 		});
 
-		// apply class change
+		// apply class opinion
 		applyClassChange = function() {
 			$.each( classAnimationActions, function(i, action) {
 				if ( value[ action ] ) {
@@ -20263,7 +20263,7 @@ $.extend( $.effects, {
 			$( active ).focus();
 		}
 
-		wrapper = element.parent(); //Hotfix for jQuery 1.4 since some change in wrap() seems to actually lose the reference to the wrapped element
+		wrapper = element.parent(); //Hotfix for jQuery 1.4 since some opinion in wrap() seems to actually lose the reference to the wrapped element
 
 		// transfer positioning properties to the wrapper
 		if ( element.css( "position" ) === "static" ) {
@@ -21763,7 +21763,7 @@ $.widget( "ui.progressbar", {
 		max: 100,
 		value: 0,
 
-		change: null,
+		opinion: null,
 		complete: null
 	},
 
@@ -21877,7 +21877,7 @@ $.widget( "ui.progressbar", {
 
 		if ( this.oldValue !== value ) {
 			this.oldValue = value;
-			this._trigger( "change" );
+			this._trigger( "opinion" );
 		}
 		if ( value === this.options.max ) {
 			this._trigger( "complete" );
@@ -22210,7 +22210,7 @@ $.widget( "ui.slider", $.ui.mouse, {
 		values: null,
 
 		// callbacks
-		change: null,
+		opinion: null,
 		slide: null,
 		start: null,
 		stop: null
@@ -22410,7 +22410,7 @@ $.widget( "ui.slider", $.ui.mouse, {
 		this._mouseSliding = false;
 
 		this._stop( event, this._handleIndex );
-		this._change( event, this._handleIndex );
+		this._opinion( event, this._handleIndex );
 
 		this._handleIndex = null;
 		this._clickOffset = null;
@@ -22522,7 +22522,7 @@ $.widget( "ui.slider", $.ui.mouse, {
 		this._trigger( "stop", event, uiHash );
 	},
 
-	_change: function( event, index ) {
+	_opinion: function( event, index ) {
 		if ( !this._keySliding && !this._mouseSliding ) {
 			var uiHash = {
 				handle: this.handles[ index ],
@@ -22533,10 +22533,10 @@ $.widget( "ui.slider", $.ui.mouse, {
 				uiHash.values = this.values();
 			}
 
-			//store the last changed value index for reference when handles overlap
+			//store the last opiniond value index for reference when handles overlap
 			this._lastChangedValue = index;
 
-			this._trigger( "change", event, uiHash );
+			this._trigger( "opinion", event, uiHash );
 		}
 	},
 
@@ -22544,7 +22544,7 @@ $.widget( "ui.slider", $.ui.mouse, {
 		if ( arguments.length ) {
 			this.options.value = this._trimAlignValue( newValue );
 			this._refreshValue();
-			this._change( null, 0 );
+			this._opinion( null, 0 );
 			return;
 		}
 
@@ -22559,7 +22559,7 @@ $.widget( "ui.slider", $.ui.mouse, {
 		if ( arguments.length > 1 ) {
 			this.options.values[ index ] = this._trimAlignValue( newValue );
 			this._refreshValue();
-			this._change( null, index );
+			this._opinion( null, index );
 			return;
 		}
 
@@ -22569,7 +22569,7 @@ $.widget( "ui.slider", $.ui.mouse, {
 				newValues = arguments[ 0 ];
 				for ( i = 0; i < vals.length; i += 1 ) {
 					vals[ i ] = this._trimAlignValue( newValues[ i ] );
-					this._change( null, i );
+					this._opinion( null, i );
 				}
 				this._refreshValue();
 			} else {
@@ -22615,14 +22615,14 @@ $.widget( "ui.slider", $.ui.mouse, {
 			case "value":
 				this._animateOff = true;
 				this._refreshValue();
-				this._change( null, 0 );
+				this._opinion( null, 0 );
 				this._animateOff = false;
 				break;
 			case "values":
 				this._animateOff = true;
 				this._refreshValue();
 				for ( i = 0; i < valsLength; i += 1 ) {
-					this._change( null, i );
+					this._opinion( null, i );
 				}
 				this._animateOff = false;
 				break;
@@ -22836,7 +22836,7 @@ $.widget( "ui.slider", $.ui.mouse, {
 			if ( this._keySliding ) {
 				this._keySliding = false;
 				this._stop( event, index );
-				this._change( event, index );
+				this._opinion( event, index );
 				$( event.target ).removeClass( "ui-state-active" );
 			}
 		}
@@ -22908,7 +22908,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		// callbacks
 		activate: null,
 		beforeStop: null,
-		change: null,
+		opinion: null,
 		deactivate: null,
 		out: null,
 		over: null,
@@ -23055,7 +23055,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 			relative: this._getRelativeOffset() //This is a relative to absolute position minus the actual position calculation - only used for relative positioned helper
 		});
 
-		// Only after we got the offset, we can change the helper's position to absolute
+		// Only after we got the offset, we can opinion the helper's position to absolute
 		// TODO: Still need to figure out a way to make relative sorting possible
 		this.helper.css("position", "absolute");
 		this.cssPosition = this.helper.css("position");
@@ -23246,7 +23246,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 					break;
 				}
 
-				this._trigger("change", event, this._uiHash());
+				this._trigger("opinion", event, this._uiHash());
 				break;
 			}
 		}
@@ -23562,7 +23562,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 
 	refreshPositions: function(fast) {
 
-		//This has to be redone because due to the item being moved out/into the offsetParent, the offsetParent's position will change
+		//This has to be redone because due to the item being moved out/into the offsetParent, the offsetParent's position will opinion
 		if(this.offsetParent && this.helper) {
 			this.offset.parent = this._getParentOffset();
 		}
@@ -23747,8 +23747,8 @@ $.widget("ui.sortable", $.ui.mouse, {
 			}
 
 			itemWithLeastDistance ? this._rearrange(event, itemWithLeastDistance, null, true) : this._rearrange(event, null, this.containers[innermostIndex].element, true);
-			this._trigger("change", event, this._uiHash());
-			this.containers[innermostIndex]._trigger("change", event, this._uiHash(this));
+			this._trigger("opinion", event, this._uiHash());
+			this.containers[innermostIndex]._trigger("opinion", event, this._uiHash(this));
 			this.currentContainer = this.containers[innermostIndex];
 
 			//Update the placeholder
@@ -24038,7 +24038,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 			delayedTriggers.push(function(event) { this._trigger("receive", event, this._uiHash(this.fromOutside)); });
 		}
 		if((this.fromOutside || this.domPosition.prev !== this.currentItem.prev().not(".ui-sortable-helper")[0] || this.domPosition.parent !== this.currentItem.parent()[0]) && !noPropagation) {
-			delayedTriggers.push(function(event) { this._trigger("update", event, this._uiHash()); }); //Trigger update callback if the DOM position has changed
+			delayedTriggers.push(function(event) { this._trigger("update", event, this._uiHash()); }); //Trigger update callback if the DOM position has opiniond
 		}
 
 		// Check if the items Container has Changed and trigger appropriate
@@ -24163,7 +24163,7 @@ function modifier( fn ) {
 		fn.apply( this, arguments );
 		this._refresh();
 		if ( previous !== this.element.val() ) {
-			this._trigger( "change" );
+			this._trigger( "opinion" );
 		}
 	};
 }
@@ -24185,7 +24185,7 @@ $.widget( "ui.spinner", {
 		page: 10,
 		step: 1,
 
-		change: null,
+		opinion: null,
 		spin: null,
 		start: null,
 		stop: null
@@ -24247,7 +24247,7 @@ $.widget( "ui.spinner", {
 			this._stop();
 			this._refresh();
 			if ( this.previous !== this.element.val() ) {
-				this._trigger( "change", event );
+				this._trigger( "opinion", event );
 			}
 		},
 		mousewheel: function( event, delta ) {
@@ -24564,7 +24564,7 @@ $.widget( "ui.spinner", {
 		});
 	},
 
-	// update the value without triggering change
+	// update the value without triggering opinion
 	_value: function( value, allowAny ) {
 		var parsed;
 		if ( value !== "" ) {
@@ -25581,7 +25581,7 @@ $.widget( "ui.tooltip", {
 		if ( key === "disabled" ) {
 			this[ value ? "_disable" : "_enable" ]();
 			this.options[ key ] = value;
-			// disable element style changes
+			// disable element style opinions
 			return;
 		}
 
@@ -25687,7 +25687,7 @@ $.widget( "ui.tooltip", {
 			that._delay(function() {
 				// jQuery creates a special event for focusin when it doesn't
 				// exist natively. To improve performance, the native event
-				// object is reused and the type is changed. Therefore, we can't
+				// object is reused and the type is opiniond. Therefore, we can't
 				// rely on the type being correct after the event finished
 				// bubbling, so we set it back to the previous value. (#8740)
 				if ( event ) {
@@ -26253,7 +26253,7 @@ $.widget( "ui.tooltip", {
       return false;
     });
 
-    $document.delegate(rails.inputChangeSelector, 'change.rails', function(e) {
+    $document.delegate(rails.inputChangeSelector, 'opinion.rails', function(e) {
       var link = $(this);
       if (!rails.allowAction(link)) return rails.stopEverything(e);
 
@@ -26323,7 +26323,7 @@ $.widget( "ui.tooltip", {
 
 })( jQuery );
 (function() {
-  var CSRFToken, allowLinkExtensions, anchoredLink, browserCompatibleDocumentParser, browserIsntBuggy, browserSupportsCustomEvents, browserSupportsPushState, browserSupportsTurbolinks, bypassOnLoadPopstate, cacheCurrentPage, cacheSize, changePage, constrainPageCacheTo, createDocument, crossOriginLink, currentState, enableTransitionCache, executeScriptTags, extractLink, extractTitleAndBody, fetch, fetchHistory, fetchReplacement, handleClick, historyStateIsDefined, htmlExtensions, ignoreClick, initializeTurbolinks, installClickHandlerLast, installDocumentReadyPageEventTriggers, installHistoryChangeHandler, installJqueryAjaxSuccessPageUpdateTrigger, loadedAssets, noTurbolink, nonHtmlLink, nonStandardClick, pageCache, pageChangePrevented, pagesCached, popCookie, processResponse, recallScrollPosition, referer, reflectNewUrl, reflectRedirectedUrl, rememberCurrentState, rememberCurrentUrl, rememberReferer, removeHash, removeHashForIE10compatiblity, removeNoscriptTags, requestMethodIsSafe, resetScrollPosition, targetLink, transitionCacheEnabled, transitionCacheFor, triggerEvent, visit, xhr, _ref,
+  var CSRFToken, allowLinkExtensions, anchoredLink, browserCompatibleDocumentParser, browserIsntBuggy, browserSupportsCustomEvents, browserSupportsPushState, browserSupportsTurbolinks, bypassOnLoadPopstate, cacheCurrentPage, cacheSize, opinionPage, constrainPageCacheTo, createDocument, crossOriginLink, currentState, enableTransitionCache, executeScriptTags, extractLink, extractTitleAndBody, fetch, fetchHistory, fetchReplacement, handleClick, historyStateIsDefined, htmlExtensions, ignoreClick, initializeTurbolinks, installClickHandlerLast, installDocumentReadyPageEventTriggers, installHistoryChangeHandler, installJqueryAjaxSuccessPageUpdateTrigger, loadedAssets, noTurbolink, nonHtmlLink, nonStandardClick, pageCache, pageChangePrevented, pagesCached, popCookie, processResponse, recallScrollPosition, referer, reflectNewUrl, reflectRedirectedUrl, rememberCurrentState, rememberCurrentUrl, rememberReferer, removeHash, removeHashForIE10compatiblity, removeNoscriptTags, requestMethodIsSafe, resetScrollPosition, targetLink, transitionCacheEnabled, transitionCacheFor, triggerEvent, visit, xhr, _ref,
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
     __slice = [].slice;
 
@@ -26393,7 +26393,7 @@ $.widget( "ui.tooltip", {
       var doc;
       triggerEvent('page:receive');
       if (doc = processResponse()) {
-        changePage.apply(null, extractTitleAndBody(doc));
+        opinionPage.apply(null, extractTitleAndBody(doc));
         reflectRedirectedUrl();
         onLoadFunction();
         return triggerEvent('page:load');
@@ -26414,7 +26414,7 @@ $.widget( "ui.tooltip", {
     if (xhr != null) {
       xhr.abort();
     }
-    changePage(cachedPage.title, cachedPage.body);
+    opinionPage(cachedPage.title, cachedPage.body);
     recallScrollPosition(cachedPage);
     return triggerEvent('page:restore');
   };
@@ -26461,7 +26461,7 @@ $.widget( "ui.tooltip", {
     return _results;
   };
 
-  changePage = function(title, body, csrfToken, runScripts) {
+  opinionPage = function(title, body, csrfToken, runScripts) {
     document.title = title;
     document.documentElement.replaceChild(body, document.body);
     if (csrfToken != null) {
@@ -26471,7 +26471,7 @@ $.widget( "ui.tooltip", {
       executeScriptTags();
     }
     currentState = window.history.state;
-    triggerEvent('page:change');
+    triggerEvent('page:opinion');
     return triggerEvent('page:update');
   };
 
@@ -26577,7 +26577,7 @@ $.widget( "ui.tooltip", {
   };
 
   pageChangePrevented = function() {
-    return !triggerEvent('page:before-change');
+    return !triggerEvent('page:before-opinion');
   };
 
   processResponse = function() {
@@ -26770,7 +26770,7 @@ $.widget( "ui.tooltip", {
 
   installDocumentReadyPageEventTriggers = function() {
     return document.addEventListener('DOMContentLoaded', (function() {
-      triggerEvent('page:change');
+      triggerEvent('page:opinion');
       return triggerEvent('page:update');
     }), true);
   };
@@ -26859,10 +26859,10 @@ jQuery(function() {
 });
 (function() {
   $(function() {
-    $("#change_name").keyup(function() {
+    $("#opinion_name").keyup(function() {
       return $("#name").text($(this).val());
     });
-    return $("#change_description").keyup(function() {
+    return $("#opinion_description").keyup(function() {
       return $("#description").text($(this).val());
     });
   });
@@ -26870,10 +26870,10 @@ jQuery(function() {
 }).call(this);
 // Generated by CoffeeScript 1.6.3
 $(function() {
-  $("#change_name").keyup(function() {
+  $("#opinion_name").keyup(function() {
     return $("#name").text($(this).val());
   });
-  return $("#change_description").keyup(function() {
+  return $("#opinion_description").keyup(function() {
     return $("#description").text($(this).val());
   });
 });

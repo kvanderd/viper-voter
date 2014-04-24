@@ -12,8 +12,12 @@ class ChangesController < ApplicationController
       Categorization.create(change_id: @change.id, category_id: num)
     end
 		@change.user_id = session[:user_id]
-		@change.save!
-		redirect_to change_path(@change.id)
+   respond_to do |format|
+  		if @change.save!
+        format.html { redirect_to change_path(@change.id), notice: 'Created An Opinion' }
+      end
+    end
+		# redirect_to change_path(@change.id)
   end
 
 

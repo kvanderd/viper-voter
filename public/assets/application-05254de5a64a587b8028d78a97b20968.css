@@ -22,15 +22,15 @@
   letter-spacing: 2px;
   margin-top: 25px; }
 
-.change_wrapper {
+.opinion_wrapper {
   border: 10px solid #F8F8FF;
   border-radius: 1em; }
 
-.change_wrapper img {
+.opinion_wrapper img {
   border: 10px solid #F8F8FF;
   border-radius: 1em; }
 
-.change_wrapper:hover {
+.opinion_wrapper:hover {
   border: 10px solid #001947; }
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
