@@ -51,8 +51,8 @@ gem 'omniauth-facebook'
 group :test, :development do
   gem 'selenium-webdriver'
   gem 'database_cleaner'
-  gem 'rspec-rails'
-  gem 'capybara'
+  # gem 'rspec-rails'
+  # gem 'capybara'
   gem 'shoulda-matchers'
   gem 'pry'
   gem 'annotate'
@@ -61,10 +61,16 @@ group :test, :development do
   gem 'awesome_print'
   gem 'wirble'
   gem 'quiet_assets'
-  gem 'factory_girl_rails'
+  # gem 'factory_girl_rails'
   gem 'faker'
   gem 'debugger'
-  # gem 'rack-mini-profiler'
+  gem 'rack-mini-profiler'
+
+
+  gem 'minitest-rails'
+  gem 'minitest-rails-capybara'
+  gem 'minitest-colorize'
+  gem 'minitest-focus'
 end
 
 # Use ActiveModel has_secure_password

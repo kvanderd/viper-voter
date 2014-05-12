@@ -3,8 +3,7 @@
 <div class="row">
 	<div class="span8 intro-box text-center" id="<%= @change.id %>">
 		<div class="change_wrapper">
-				<h6 ><%=link_to @change.name %></h6>
-				<p ><%=link_to @change.description %></p>
+				<p ><%= @change.description %></p>
 				<p> <%= link_to "Created By: #{@change.user.username}", user_path(@change.user_id) if @change.user %>
 				<p><%= image_tag @change.picture_url(:large) if @change.picture.url %></p>
 				<p class="voted"><%= link_to 'up', votes_path(vote: {upvote: true, change_id: @change.id} ), :method => :post, remote: true  %> |
@@ -16,23 +15,23 @@
 	</div>
 </div>
 
-<div class="row text-center">
-<h3>Categories</h3>
-	<% @change.categories.each do |cat| %>
-		<div class="glyphicon glyphicon-star-empty"></div><%= cat.name %>
-	<% end %>
-<div class="row">
-	<h3 >Tell Your <%= current_user.state.name %> Representatives</h3>
+<% if current_user %>
+	<div class="row text-center">
+	<h3>Categories</h3>
+		<% @change.categories.each do |cat| %>
+			<div class="glyphicon glyphicon-star-empty"></div><%= cat.name %>
+		<% end %>
+	<div class="row">
+		<h3 >Tell Your <%= current_user.state.name %> Representatives</h3>
 
-	<% current_user.state.senates.each do |senator| %>
-	<div class="col-md-6">
-		<p>Name: <%= senator.first_name %> <%= senator.last_name %></p>
-		<p>Party: <%= senator.party %></p>
-		<p><%= link_to "Twitter", "https://www.facebook.com/#{senator.twiter}" %>
-		<%= link_to "Facebook", "https://www.facebook.com/#{senator.facebook}" %></p>
-	</div>
-	<% end %>
-
+		<% current_user.state.senates.each do |senator| %>
+		<div class="col-md-6">
+			<p>Name: <%= senator.first_name %> <%= senator.last_name %></p>
+			<p>Party: <%= senator.party %></p>
+			<p><%= link_to "Twitter", "https://www.facebook.com/#{senator.twiter}" %>
+			<%= link_to "Facebook", "https://www.facebook.com/#{senator.facebook}" %></p>
+		</div>
+		<% end %>
 </div>
 <div class="row text-center">
 	<h3>Share with your friends</h3>
@@ -43,3 +42,7 @@
 
 	</div>
 </div>
+	<% else %>
+	<h4 class="text-center">Join the discussion and to see your local representatives by <%= link_to "Create an Account", new_user_path %></h4>
+
+<% end %>

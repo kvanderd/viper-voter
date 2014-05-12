@@ -1,6 +1,3 @@
-input {
-	outline: none;
-}
 
 .container {
 	padding-top: 60px;
@@ -20,26 +17,26 @@ body, input, textarea {
                  Times, "Times New Roman", serif;
 }
 
-.form-control, .form-control:focus{
-	border-color: #F8F8FF;//#rgba(126, 239, 104, 0.8);
-	box-shadow: 0 10px 10px #F8F8FF;//rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
-	outline: 0 none;
-}
+// .form-control, .form-control:focus{
+// 	border-color: #F8F8FF;//#rgba(126, 239, 104, 0.8);
+// 	box-shadow: 0 10px 10px #F8F8FF;//rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+// 	// outline: 0 none;
+// }
 
-.btn {border: 5px solid #F8F8FF;}
-.btn:hover {background-color: #fff; border: 5px solid #F8F8FF;}
-.btn:active {outline: none; }
-.btn:focus  { outline: none; 	-webkit-box-shadow: none !important; 	-moz-box-shadow: none !important; 	box-shadow: none !important; }
+// .btn {border: 5px solid #F8F8FF;}
+// .btn:hover {background-color: #fff; border: 5px solid #F8F8FF;}
+// // .btn:active {outline: none; }
+// // .btn:focus  { outline: none; 	-webkit-box-shadow: none !important; 	-moz-box-shadow: none !important; 	box-shadow: none !important; }
 
-checkbox {
-	border: 1px solid #F8F8FF;
-}
+// checkbox {
+// 	border: 1px solid #F8F8FF;
+// }
 
 
 a {color: #001947;}
 // a:hover {color: red;}
 
-nav {background-color: white;}
+nav {background-color: #fff;}
 
 
 h1, h2, h3, h4, h5, p, btn, div {color: #523F15;}

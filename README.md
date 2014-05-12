@@ -21,3 +21,4 @@
 3. Tests && Validations
 4. Done
 5. User voting.
+6. redis
