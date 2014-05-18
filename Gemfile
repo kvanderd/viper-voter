@@ -10,6 +10,9 @@ gem 'pg'
 # gem  "wikipedia-client"
 # gem 'rest-client'
 
+# nested comments
+gem 'ancestry'
+
 # Use SCSS for stylesheets
 gem 'sass-rails'
 gem "sass", "~> 3.2.5"

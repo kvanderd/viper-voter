@@ -8,8 +8,11 @@ class Change < ActiveRecord::Base
   has_many :categorizations, :dependent => :destroy
   has_many :categories, through: :categorizations
 
-  accepts_nested_attributes_for :categories
+  has_many :comments
 
+  accepts_nested_attributes_for :categories
+  accepts_nested_attributes_for :comments
+  
 	mount_uploader :picture, PictureUploader
 
   # validates_inclusion_of :format, in: %w( jpg gif png ), message: "extension %{value} is not included in the list"

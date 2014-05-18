@@ -1,4 +1,4 @@
-$ ->
+$(document).on 'ready page:load', ->
 	$("#change_name").keyup ->
 		$("#name").text($(this).val());
 	$("#change_description").keyup ->

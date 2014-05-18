@@ -1,0 +1,7 @@
+// $('#comments').html("<%=j render @change.comments %>");
+// $("#comment_content").val("")
+
+$('.new_comment').remove();
+
+$('#new_link').show();
+$('#added_comments').append('<%= j nested_comments (@change.comments).arrange(:order => :created_at)  %>');

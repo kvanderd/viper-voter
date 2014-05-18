@@ -22,3 +22,17 @@
 4. Done
 5. User voting.
 6. redis
+
+
+// left off - 
+showing time of displayed comments
+reply to comment links
+ancestry comments
+fb social sharring
+
+
+comments are not showing as nested
+
+
+fb :: http://stackoverflow.com/questions/12234846/configuring-facebooks-page-like-button
+http://stackoverflow.com/questions/19031367/rails-and-ancestry-form-submits-parent-id-empty

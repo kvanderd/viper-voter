@@ -11,7 +11,9 @@ Opinion::Application.routes.draw do
   resources :sessions
   resources :votes
 
-  resources :changes
+  resources :changes do
+    resources :comments
+  end
   resources :categories
    #do 
   #   post :vote

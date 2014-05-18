@@ -1,48 +1,20 @@
-<h3 class="text-center"><%= @change.name %></h3>
 
-<div class="row">
-	<div class="span8 intro-box text-center" id="<%= @change.id %>">
-		<div class="change_wrapper">
-				<p ><%= @change.description %></p>
-				<p> <%= link_to "Created By: #{@change.user.username}", user_path(@change.user_id) if @change.user %>
-				<p><%= image_tag @change.picture_url(:large) if @change.picture.url %></p>
-				<p class="voted"><%= link_to 'up', votes_path(vote: {upvote: true, change_id: @change.id} ), :method => :post, remote: true  %> |
-				<%= link_to 'down', votes_path(vote: { upvote: false, change_id: @change.id }), :method => :post, remote: true %>
-			</p>
 
-				<p class="votes">Total Votes: <%= @change.aggregate %></p>
-		</div>
-	</div>
-</div>
+<%= render "changes/change" %>
+
 
 <% if current_user %>
-	<div class="row text-center">
-	<h3>Categories</h3>
-		<% @change.categories.each do |cat| %>
-			<div class="glyphicon glyphicon-star-empty"></div><%= cat.name %>
-		<% end %>
-	<div class="row">
-		<h3 >Tell Your <%= current_user.state.name %> Representatives</h3>
-
-		<% current_user.state.senates.each do |senator| %>
-		<div class="col-md-6">
-			<p>Name: <%= senator.first_name %> <%= senator.last_name %></p>
-			<p>Party: <%= senator.party %></p>
-			<p><%= link_to "Twitter", "https://www.facebook.com/#{senator.twiter}" %>
-			<%= link_to "Facebook", "https://www.facebook.com/#{senator.facebook}" %></p>
-		</div>
-		<% end %>
-</div>
-<div class="row text-center">
-	<h3>Share with your friends</h3>
-	<div class="col-mid-12">
-<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="box_count"></div>
-<a href="https://twitter.com/share" class="twitter-share-button" data-via="kvanderd">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-	</div>
-</div>
-	<% else %>
-	<h4 class="text-center">Join the discussion and to see your local representatives by <%= link_to "Create an Account", new_user_path %></h4>
-
+	<%= render "changes/meta_data" %>
+	<%= render "changes/share" %>
+<% else %>
+	<h4 class="text-center">Create an account here: <%= link_to "Create an Account", new_user_path %> to get your local Representatives social media and contact information </h4>
 <% end %>
+<h2 class="page-header text-center">Join the Discussion</h2>
+<%= render "comments/comment_form" %>
+
+<div id="comments">
+	<%= render @change.comments %>
+</div>
+
+
+<div id="added_comments"></div>
