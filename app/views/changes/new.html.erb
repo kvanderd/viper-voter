@@ -1,5 +1,6 @@
 <div class="row">
-	<div class="col-md-6 text-center change_wrapper">
+	<div class="col-md-6 text-center">
+		<div class="change_wrapper">
 	<%= form_for @change, :html => {:role => "form", multipart: true} do |t| %>
 	<%= render "shared/error_messages", :target => @change %>
 	<div class="form-group">
@@ -19,7 +20,10 @@
 	<% end %>
 <br />
 <br />
-	<p><%= t.submit class: "btn btn-default"%></p>
+</div>
+
+<h3>All finished? </h3>
+	<p><%= t.submit "Create Opinion", class: "btn btn-default"%></p>
 	<% end %>
 </div>
 

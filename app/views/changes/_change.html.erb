@@ -1,4 +1,5 @@
 <h3 class="text-center"><%= @change.name %></h3>
+<p>300 People Have Voted For this</p>
 
 
 <div class="row">
@@ -6,17 +7,18 @@
 		<div class="change_wrapper">
 			<p><%= @change.description %></p>
    
-		<% @change.categories.each do |cat| %>
-			<div class="glyphicon glyphicon-star-empty"></div> <%= cat.name %>
-		<% end %>
-
-			<p><%= link_to "Created By: #{@change.user.username}", user_path(@change.user_id) if @change.user %>
-			<p><%= image_tag @change.picture_url(:large) if @change.picture.url %></p>
-			<p class="voted"><%= link_to 'up', votes_path(vote: {upvote: true, change_id: @change.id} ), :method => :post, remote: true  %> |
+		<p class="voted"><%= link_to 'up', votes_path(vote: {upvote: true, change_id: @change.id} ), :method => :post, remote: true  %> |
 			<%= link_to 'down', votes_path(vote: { upvote: false, change_id: @change.id }), :method => :post, remote: true %>
 		</p>
 			<p class="votes">Aggregate Votes: <%= @change.aggregate %></p>
-		</div>
+
+			<p><%= link_to "Created By: #{@change.user.username}", user_path(@change.user_id) if @change.user %>
+			<p><%= image_tag @change.picture_url(:large) if @change.picture.url %></p>
+			
 		
+			<% @change.categories.each do |cat| %>
+			<div class="glyphicon glyphicon-star-empty"></div> <%=link_to cat.name.upcase, category_path(cat.id) %>
+		<% end %>
+		</div>
 	</div>
 </div>
