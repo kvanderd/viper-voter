@@ -77,8 +77,11 @@ states.each do |state|
 			              form: hash["contact_form"],
 			              phone: hash["phone"]
 			              )
+
+        
+        # s.contact_id = c.id
+        c.senate_id = s.id
         c.save!
-        s.contact_id = c.id
         s.save!
 
 			o = OfficeTerm.create(		             
@@ -91,9 +94,9 @@ states.each do |state|
        s.save!
 
 			party = hash["party"]
-			if party = "D"
+			if party == "D"
 				s.party_id = 1
-			elsif party = "R"
+			elsif party == "R"
 				s.party_id = 2
 			else
 				s.party_id  = 3

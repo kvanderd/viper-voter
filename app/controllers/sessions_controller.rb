@@ -5,8 +5,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    puts "I am in the create session" * 9
-    ap params
     @user = User.find_by_username(params[:user][:username])
     login(@user)
     if @user && @user.authenticate(params[:user][:password])

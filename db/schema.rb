@@ -48,12 +48,13 @@ ActiveRecord::Schema.define(version: 20140517162846) do
   add_index "comments", ["ancestry"], name: "index_comments_on_ancestry", using: :btree
 
   create_table "contacts", force: true do |t|
-    t.string "twiter"
-    t.string "facebook"
-    t.string "form"
-    t.string "phone"
-    t.string "youtub_id"
-    t.string "website"
+    t.string  "twiter"
+    t.string  "facebook"
+    t.string  "form"
+    t.string  "phone"
+    t.string  "youtub_id"
+    t.string  "website"
+    t.integer "senate_id"
   end
 
   create_table "houses", force: true do |t|
@@ -88,7 +89,6 @@ ActiveRecord::Schema.define(version: 20140517162846) do
     t.string  "first_name"
     t.string  "last_name"
     t.integer "state_id"
-    t.integer "contact_id"
     t.integer "office_term_id"
     t.integer "party_id"
   end

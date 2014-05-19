@@ -15,5 +15,9 @@ class ApplicationController < ActionController::Base
 		@current_user ||= User.find session[:user_id] if session[:user_id]
 	end
 
-	helper_method :current_user
+	def state_selector
+    current_user ? current_user.state : State.find_by_name("California")
+	end
+
+	helper_method :current_user, :state_selector
 end

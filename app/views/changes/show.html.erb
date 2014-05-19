@@ -1,16 +1,13 @@
+<%= title "#{@change.name}" %>
+
 
 
 <%= render "changes/change" %>
 
+<%= render "changes/repersenatives_holder" %>
 
-<% if current_user %>
-	<%= render "changes/meta_data" %>
-	<%= render "changes/share" %>
-<% else %>
-	<h4 class="text-center">Create an account here: <%= link_to "Create an Account", new_user_path %> to get your local Representatives social media and contact information </h4>
-<% end %>
 <h2 class="page-header text-center">Join the Discussion</h2>
-<%= render "comments/comment_form" %>
+	<%= render "comments/form" %>
 
 <div id="comments">
 	<%= render @change.comments %>

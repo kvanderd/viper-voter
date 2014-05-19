@@ -4,8 +4,13 @@
 <div class="row">
 	<div class="span6 intro-box text-center" id="<%= @change.id %>">
 		<div class="change_wrapper">
-			<p ><%= @change.description %></p>
-			<p> <%= link_to "Created By: #{@change.user.username}", user_path(@change.user_id) if @change.user %>
+			<p><%= @change.description %></p>
+   
+		<% @change.categories.each do |cat| %>
+			<div class="glyphicon glyphicon-star-empty"></div> <%= cat.name %>
+		<% end %>
+
+			<p><%= link_to "Created By: #{@change.user.username}", user_path(@change.user_id) if @change.user %>
 			<p><%= image_tag @change.picture_url(:large) if @change.picture.url %></p>
 			<p class="voted"><%= link_to 'up', votes_path(vote: {upvote: true, change_id: @change.id} ), :method => :post, remote: true  %> |
 			<%= link_to 'down', votes_path(vote: { upvote: false, change_id: @change.id }), :method => :post, remote: true %>

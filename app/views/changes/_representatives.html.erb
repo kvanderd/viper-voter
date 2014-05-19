@@ -1,0 +1,14 @@
+	<div class="row text-center">
+	
+	<div class="row">
+		<h3 >Tell Your <%= current_user.state.name %> Representatives</h3>
+
+		<% current_user.state.senates.each do |senator| %>
+		<div class="col-md-6">
+			<p>Name: <%= senator.first_name %> <%= senator.last_name %></p>
+			<p>Party: <%= senator.party %></p>
+			<p><%= link_to "Twitter", "https://www.facebook.com/#{senator.twitter}" %>
+			<%= link_to "Facebook", "https://www.facebook.com/#{senator.facebook}" %></p>
+		</div>
+		<% end %>
+</div>

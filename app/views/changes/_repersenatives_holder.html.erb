@@ -1,0 +1,22 @@
+	<div class="row text-center">
+	
+	<div class="row">
+		<h3 >Tell Your <%= state_selector.name %> Representatives</h3>
+
+
+		<% if !current_user %>
+			<h5>Not from California?  <%= link_to "Create an Account", new_user_path %> and get your local representatives data</h5>
+    <% end %>
+    	<div class="text-center"><%= render "changes/twitter" %></div>
+
+		<% state_selector.senates.each do |senator| %>
+		<div class="col-md-6">
+			<p>Name: <%= senator.first_name %> <%= senator.last_name %></p>
+			<p>Party: <%= senator.party.name %></p>
+			<p>Twitter: <%= link_to "@#{senator.contact.twiter}", "https://www.twitter.com/#{senator.contact.twiter}", id: "tweet" %></p>
+			<p>Facebook: <%= link_to "Facebook", "https://www.facebook.com/#{senator.contact.facebook}" %></p>
+			<p><%= senator.contact.phone %></p>
+		</div>
+		
+		<% end %>
+</div>

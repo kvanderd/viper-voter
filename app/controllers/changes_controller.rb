@@ -23,7 +23,6 @@ class ChangesController < ApplicationController
 
   def show
     @change = Change.joins(:categories).find(params[:id])
-    
   end
 
 

@@ -1,5 +1,7 @@
 class Senate < ActiveRecord::Base
 	belongs_to :state
+	has_one :contact
+	belongs_to :party
 
 
 
