@@ -43,4 +43,9 @@ class Change < ActiveRecord::Base
   end
 
 
+  def total_voted
+    self.up_votes.size + self.down_votes.size
+  end
+
+
 end

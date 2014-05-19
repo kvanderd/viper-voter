@@ -28,9 +28,14 @@
 showing time of displayed comments
 reply to comment links
 ancestry comments
-fb social sharring
+
 
 
 Fix voting - 
   Show: For, Against & total votes
   how to keep track of what user has voted on which change
+
+Design Doc
+
+Test/Validations
+Done
