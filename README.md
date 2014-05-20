@@ -39,3 +39,5 @@ Design Doc
 
 Test/Validations
 Done
+
+Opinion Img Preview: http://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded

@@ -9,7 +9,8 @@ class ChangesController < ApplicationController
   def create
 		@change = Change.create(change_params)
     params["change"]["category_id"].each do |num|
-      Categorization.create(change_id: @change.id, category_id: num)
+      n = Category.find_by_name(num)
+      c = Categorization.create(change_id: @change.id, category_id: n.id)
     end
 		@change.user_id = session[:user_id]
     
