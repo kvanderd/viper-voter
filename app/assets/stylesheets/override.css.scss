@@ -18,19 +18,35 @@ body, input, textarea {
 }
 
 // .form-control, .form-control:focus{
-// 	border-color: #F8F8FF;//#rgba(126, 239, 104, 0.8);
-// 	box-shadow: 0 10px 10px #F8F8FF;//rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
-// 	// outline: 0 none;
+// 	border-color: #001947;
+	// border-color: 3px solid #001947;
 // }
 
-// .btn {border: 5px solid #F8F8FF;}
-// .btn:hover {background-color: #fff; border: 5px solid #F8F8FF;}
-// // .btn:active {outline: none; }
-// // .btn:focus  { outline: none; 	-webkit-box-shadow: none !important; 	-moz-box-shadow: none !important; 	box-shadow: none !important; }
+.form-control, .form-control:focus{
+	border: 5px solid #F8F8FF;//#rgba(126, 239, 104, 0.8);
+	// box-shadow: 0 10px 10px #F8F8FF;//rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+	// outline: 0 none;
+}
 
-// checkbox {
-// 	border: 1px solid #F8F8FF;
-// }
+textarea:focus, input[type="text"]:focus, input[type="text-area"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="url"]:focus {   
+	box-shadow: 0 1px 1px rgba(0, 25, 71, 1) inset, 0 0 8px rgba(0, 25, 71, 1);
+	outline: 0 none;
+}
+
+.btn {border: 5px solid #F8F8FF;}
+
+// .btn:active {box-shadow: 0 -1px -1px rgba(0, 25, 71, 1) inset, 0 0 8px rgba(0, 25, 71, 1);}
+// .btn:focus  { outline: none; 	-webkit-box-shadow: none !important; 	-moz-box-shadow: none !important; 	box-shadow: none !important; }
+
+.btn:hover {
+	box-shadow: 0 1px 1px rgba(0, 25, 71, 1) inset, 0 0 8px rgba(0, 25, 71, 1);
+	outline: 0 none;
+	background-color: #fff; border: 5px solid #F8F8FF;
+}
+
+checkbox {
+	border: 2px solid #F8F8FF;
+}
 
 
 a {color: #001947;}
