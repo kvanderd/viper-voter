@@ -3,7 +3,7 @@
 		<%= form_for :user, url: sessions_path, method: :post, :html => {:role => "form"} do |t| %>
 		   <div class="form-group">
 				<%= t.label :username %>
-				<%= t.text_field :username, class: "form-control", required:true %>
+				<%= t.text_field :username, class: "form-control", required:true, autofocus: true %>
 			</div>
 			<div class="form-group">
 			<%= t.label :password %>

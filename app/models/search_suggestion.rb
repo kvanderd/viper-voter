@@ -6,14 +6,6 @@ class SearchSuggestion < ActiveRecord::Base
     suggestions.order(:popularity).limit(10).pluck(:term)
 	end
 
-
-  # def self.index_categories
-  #   Category.find_each do |topic|
-  #     index_term(topic.name)
-  #     topic.name.split.each { |t| index_term(t) }
-  #   end
-  # end
-
   def self.index_states
     State.find_each do |state|
       index_term(state.name)

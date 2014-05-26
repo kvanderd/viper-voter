@@ -1,2 +1,4 @@
-$('#<%= @vote.change_id %> .voted').addClass("muted")
-$('#<%= @vote.change_id %> .votes').replaceWith("<p>Total Votes: <%= @aggregate_votes %></p>")
+
+	$('#<%= @change_id %> .voted').addClass("muted")
+	$('#<%= @change_id %> .votes').replaceWith("<p>Total Votes: <%= @aggregate_votes %></p>")
+

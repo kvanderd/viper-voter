@@ -1,6 +1,6 @@
 $(document).on 'ready page:load', ->
 
-	$(document).on 'ready page:load', ->
+	# $(document).on 'ready page:load', ->
 	$("#change_name").keyup ->
 			$("#name").text($(this).val());
 		$("#change_description").keyup ->
@@ -30,3 +30,8 @@ $(document).on 'ready page:load', ->
 		$("[type=checkbox]:checked").each ->
 			s += @value + " <div class='glyphicon glyphicon-star-empty'></div> "
 			$("#category").html s.slice(0, s.length - 1)
+	# 		console.log(s)
+
+	# $("form").submit = (s) ->
+	# 	if s.length == 0
+	# 		alert("You must select at least one cagegory")
