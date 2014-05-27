@@ -1,7 +1,6 @@
 
 
-$('.new_comment').remove();
-
-$('#new_link').show();
-$('#added_comments').append('<%= j nested_comments (@change.comments).arrange(:order => :created_at)  %>');
-
+// $('.new_comment').remove();
+$("#comment_content").val(" ")
+$('#added_comments').append('<div class="comment"><%= j @comment.content %></div>')
+// $('#added_comments').append('<%= j nested_comments (@change.comments).arrange(:order => :created_at)  %>');

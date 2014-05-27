@@ -2,20 +2,19 @@
 .comment {
   margin: 8px 0;
   padding: 8px 15px;
-  border: solid 1px #999;
-  width: 300px;
-  border-radius: 12px;
-  // background-image: -webkit-gradient(
-  //     linear,
-  //     left bottom,
-  //     left top,
-  //     color-stop(0, #CCC),
-  //     color-stop(1, #F5F5F5)
-  // );
+  border: solid 5px #F8F8FF;
+  border-radius: 3px;
+  background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0, #fff),
+      color-stop(1, #ccc)
+  );
   background-image: -moz-linear-gradient(
       center bottom,
-      #CCC 0%,
-      #F5F5F5 100%
+      #fff 0%,
+      #fff 100%
   );
 }
 

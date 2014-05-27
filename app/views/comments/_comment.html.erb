@@ -2,16 +2,17 @@
 
 <% if comment.content %>
 	<div class="row">
-		<div class="col-sm-6 col-sm-offset-3 comment">
+		<div class="col-sm-8 col-sm-offset-2">
+			<div class="comment">
 			
 			  <%= comment.content %>
 			  <div class="text-right">
-				  <%= "created at: #{comment.created_at.to_date}" if comment.created_at %>
+				  <%# "created at: #{comment.created_at.to_date}" if comment.created_at %>
 
-				  <%= link_to "reply", new_change_comment_path(@change, :parent_id => comment.id), remote: true, id: "new_link#{comment.id}" %>
+				  <%# link_to "reply", new_change_comment_path(@change, :parent_id => comment.id), remote: true, id: "new_link#{comment.id}" %>
 				</div>
 			
-
+      </div>
 			</div>
 		</div>
 

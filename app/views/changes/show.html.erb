@@ -9,9 +9,11 @@
 <h2 class="page-header text-center">Join the Discussion</h2>
 	<%= render "comments/form" %>
 
+
+	<div id="added_comments" class="col-sm-8 col-sm-offset-2"></div>
+
 <div id="comments">
-	<%= render @change.comments %>
+	<%= render @change.comments.reverse %>
 </div>
 
 
-<div id="added_comments"></div>

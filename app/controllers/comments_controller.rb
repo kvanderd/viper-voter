@@ -17,8 +17,6 @@ class CommentsController < ApplicationController
   end
 
 	def create
-  
-
         @change = Change.find(params[:change_id])
         @comment = @change.comments.create(comment_params)
        
