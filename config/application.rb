@@ -8,7 +8,7 @@ require 'rake/testtask'
 require "action_mailer/railtie"
 # require "active_resource/railtie"
 require "sprockets/railtie"
-require "minitest/rails/railtie"
+# require "minitest/rails/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

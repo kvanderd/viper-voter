@@ -69,11 +69,11 @@ group :test, :development do
   gem 'debugger'
   gem 'rack-mini-profiler'
 
+  gem 'minitest-rails'
+  gem 'minitest-rails-capybara'
+  gem 'minitest-colorize'
+  gem 'minitest-focus'
 
-  # gem 'minitest-rails'
-  # gem 'minitest-rails-capybara'
-  # gem 'minitest-colorize'
-  # gem 'minitest-focus'
 end
 
 # Use ActiveModel has_secure_password
