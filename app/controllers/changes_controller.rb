@@ -29,22 +29,7 @@ class ChangesController < ApplicationController
 
   def vote
 
-    value = params[:value]
-    @vote = Vote.find_or_create_by(change_id: params[:id], user_id: current_user.id)
-    if @vote.value == value
-      @k == 0
-    else
-      @vote.value = value
-      @vote.save!
-      @k = value.to_i
-    end 
-  
-    # value = params[:value]
-    # @vote = Vote.find_or_create_by(change_id: params[:id], user_id: current_user.id)
-    # @vote.value = value if @vote.value.to_s != value
-    # @vote.save!
-    # @c = Change.find(params[:id])
-    # @f = @c.total_votes
+    @k = current_user.vote_for(params[:id], params[:value])
 
     respond_to do |format|
         format.js

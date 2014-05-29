@@ -27,7 +27,6 @@ class Change < ActiveRecord::Base
     points = self.aggregate
     time = ((Time.now - self.created_at) / 5760).round
     rank = (points - 1).to_f / ((time + 2)**gravity)
-
 	end
 
 
