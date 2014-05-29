@@ -1,0 +1,29 @@
+.not_vote {
+   // pointer-events: none;
+   cursor: default;
+}
+
+.not_vote:hover {}
+
+
+.yes_vote {}
+
+
+
+
+.message{
+    display:none;
+    color:#000;
+    background:#999;
+    position:absolute;
+    top:10px;
+}
+
+li{
+    position:relative;
+}
+
+.anchor:hover + .message{
+    display:block !important;
+    z-index:10;
+}

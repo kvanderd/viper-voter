@@ -13,6 +13,7 @@ Opinion::Application.routes.draw do
 
   resources :changes do
     resources :comments
+    member { post :vote }
   end
   resources :categories
    #do 

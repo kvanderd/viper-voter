@@ -1,22 +1,23 @@
 <h2>Welcome <%= @user.username %></h2>
-<h4>Latest Created Opinions</h4>
-<div class="row">
-<% @user.changes.each do |change| %>
-<div class="col-md-2 intro-box text-center">
-	<p><%= change.name %></p>
-	<p><%= image_tag change.picture_url(:thumb) %></p>
-	<p><%= change.description %></p>
-</div>
-<% end %>
-</div>
 
 <div class="row">
+<h4>Latest Created Opinions</h4>
+	<% @user.changes.each do |change| %>
+	<div class="col-md-2 intro-box text-center">
+		<p><%= change.name %></p>
+		<p><%= image_tag change.picture_url(:thumb) %></p>
+		<p><%= change.description %></p>
+	</div>
+	<% end %>
+</div>
+
+<div class="row text-center">
 <% @user.state.senates.each do |senator| %>
-<div class="ol-md-4">
+<div class="col-md-4">
 	<p>Name: <%= senator.first_name %> <%= senator.last_name %></p>
-	<p>Party: <%= senator.party %></p>
-	<p><%= link_to "Twitter", "https://www.facebook.com/#{senator.twiter}" %></p>
-	<p><%= link_to "Facebook", "https://www.facebook.com/#{senator.facebook}" %></p>
+	<p>Party: <%= senator.party.name %></p>
+	<p>Twitter: <%= link_to "@#{senator.contact.twiter}", "https://www.facebook.com/#{senator.contact.twiter}" %></p>
+	<p>Facebook: <%= link_to "Facebook", "https://www.facebook.com/#{senator.contact.facebook}" %></p>
 </div>
 <% end %>
 

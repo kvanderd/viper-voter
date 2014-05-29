@@ -7,4 +7,9 @@ class User < ActiveRecord::Base
 	validates_confirmation_of :password
 	has_secure_password
 
+
+	def can_vote_for?(change)
+	  votes.build(value: 1, change: change).valid?
+	end
+
 end

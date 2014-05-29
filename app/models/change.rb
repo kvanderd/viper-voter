@@ -48,4 +48,8 @@ class Change < ActiveRecord::Base
   end
 
 
+  def new_total_votes
+     self.votes.where(value: 1).size - self.votes.where(value: -1).size
+  end
+
 end

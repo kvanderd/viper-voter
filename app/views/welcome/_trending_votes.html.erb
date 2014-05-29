@@ -12,6 +12,7 @@
 				<p><%=link_to (image_tag(change.picture_url(:thumb) )), change_path(change.id) %></p>
 				<!-- <p class="voted"><%# link_to 'up', votes_path(vote: {upvote: true, change_id: change.id} ), :method => :post, remote: true  %> | -->
 				<%# link_to 'down', votes_path(vote: { upvote: false, change_id: change.id }), :method => :post, remote: true %>
+				<%= link_to "more...", change_path(change.id)  %>
 			</p>
 			</div>
 		</div>
