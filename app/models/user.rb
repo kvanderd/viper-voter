@@ -8,8 +8,10 @@ class User < ActiveRecord::Base
 	has_secure_password
 
 
-	def can_vote_for?(change)
-	  votes.build(value: 1, change: change).valid?
-	end
 
+
+
+  def vote_for(change_id)
+  	vote = self.votes.where(change_id: change_id).first || self.votes.build(change_id: change_id)
+  end
 end

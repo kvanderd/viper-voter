@@ -30,26 +30,27 @@ class Change < ActiveRecord::Base
 
 	end
 
-  def up_votes
-    votes.select{|vote| vote.upvote }
-  end
-
-  def down_votes
-    votes.reject{|vote| vote.upvote }
-  end
 
   def aggregate
     self.up_votes.size - self.down_votes.size
   end
 
 
-  def total_voted
-    self.up_votes.size + self.down_votes.size
+  def up_votes
+     votes.select{|vote| vote.value == 1 }
+  end
+
+  def down_votes
+    votes.select{|vote| vote.value == -1 }
   end
 
 
-  def new_total_votes
-     self.votes.where(value: 1).size - self.votes.where(value: -1).size
+  def total_votes
+     self.up_votes.size - self.down_votes.size 
+  end
+
+  def total_voted
+     self.up_votes.size + self.down_votes.size 
   end
 
 end

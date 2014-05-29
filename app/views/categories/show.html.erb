@@ -1,14 +1,12 @@
 <div class="row span3">
 	<% @changes.each do |change| %>
 		<br />
-			<div class="change_wrapper text-center">
+			<div class="change_wrapper text-center <%= change.id %>">
 			<p><%= link_to "Created by: #{change.user.username}", user_path(change.user.id) if change.user %></p>
 			<h4><%=link_to "#{change.name}", change_path(change.id) %></h4>
 			<p><%= change.description %></p>
-			<p class="voted"><%= link_to 'upvote', votes_path(vote: {upvote: true, change_id: change.id} ), :method => :post, remote: true  %> |
-			<%= link_to 'downvote', votes_path(vote: { upvote: false, change_id: change.id} ), :method => :post, remote: true %></p>
-			<p class="votes">Total Votes: <%= change.aggregate %></p>
 
+		
 			<!-- <p><button>Follow Topic</button></p> -->
 			<%= image_tag change.picture_url(:large) %>
 			<br />

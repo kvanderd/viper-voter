@@ -29,29 +29,25 @@ class ChangesController < ApplicationController
 
   def vote
 
+    value = params[:value]
+    @vote = Vote.find_or_create_by(change_id: params[:id], user_id: current_user.id)
+    if @vote.value == value
+      @k == 0
+    else
+      @vote.value = value
+      @vote.save!
+      @k = value.to_i
+    end 
+  
+    # value = params[:value]
+    # @vote = Vote.find_or_create_by(change_id: params[:id], user_id: current_user.id)
+    # @vote.value = value if @vote.value.to_s != value
+    # @vote.save!
+    # @c = Change.find(params[:id])
+    # @f = @c.total_votes
 
-   value = params[:value]
-    @v = Vote.find_or_create_by(change_id: params[:id], user_id: current_user.id)
-    @v.value = value
-    @v.save!
- 
-    # vote = current_user.votes.new(value: params[:value], change_id: params[:id])
     respond_to do |format|
-      @v = @v.value.to_i
-      # if v.value == value.to_i
-      #   ap "love" * 90
-      #   puts "you voted the same way"
-      # else
-      #   v.value = value
-      #   redirect_to :back, notice: "Unable to vote, perhaps you already did."
-
-        # v.save!
-        #send some data back to the dom that updates vote count by one, and highlights the up area.
-        # redirect_to :back, notice: "Thank you for voting."
         format.js
-      # else
-      #   redirect_to :back, notice: "Unable to vote, perhaps you already did."
-      # end
     end
   end
 
@@ -63,6 +59,10 @@ private
 
   def find_state
      State.where(name: params[:search].capitalize).pop.id
+  end
+
+    def vote_params
+    params.require(:vote).permit!
   end
 
 
