@@ -1,0 +1,10 @@
+<div class="space"></div>
+<div class="space"></div>
+
+<div class="text-center">
+	<h2>Vote</h2>
+
+	 <h1><%=  link_to image_tag("thumb_up.png"), vote_change_path(@change, value: 1), "data-original-title" => "You must be logged in to vote",  method: "post", remote: true, class: vote_users %>
+	<span id="total_votes"><%=  @change.total_votes %></span>
+	<%=  link_to image_tag("thumb_down.png"), vote_change_path(@change, value: -1), "data-original-title" => "You must be logged in to vote",  method: "post", remote: true, class: vote_users  %></h1>
+</div>

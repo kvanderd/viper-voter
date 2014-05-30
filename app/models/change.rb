@@ -36,20 +36,20 @@ class Change < ActiveRecord::Base
 
 
   def up_votes
-     votes.select{|vote| vote.value == 1 }
+     votes.select{|vote| vote.value == 1 }.size
   end
 
   def down_votes
-    votes.select{|vote| vote.value == -1 }
+    votes.select{|vote| vote.value == -1 }.size
   end
 
 
   def total_votes
-     self.up_votes.size - self.down_votes.size 
+     self.up_votes - self.down_votes
   end
 
   def total_voted
-     self.up_votes.size + self.down_votes.size 
+     self.up_votes + self.down_votes
   end
 
 end

@@ -31,6 +31,7 @@ class ChangesController < ApplicationController
 
     @k = current_user.vote_for(params[:id], params[:value])
 
+
     respond_to do |format|
         format.js
     end

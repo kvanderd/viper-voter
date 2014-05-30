@@ -1,22 +1,21 @@
-	<div class="row text-center">
-	
-	<div class="row">
-		<h3 >Tell Your <%= state_selector.name %> Representatives</h3>
+<div class="space"></div>
 
 
+	<h4 class="text-center" >Tell Your <%= state_selector.name %> Senators</h4>
 		<% if !current_user %>
-			<h5>Not from California?  <%= link_to "Create an Account", new_user_path %> and get your local representative's data</h5>
+			<h5 class="text-center">Not from California?  <%= link_to "Create an Account", new_user_path %> and get your local representative's data</h5>
     <% end %>
-    	<div class="text-center"><%= render "changes/twitter" %></div>
-
+    
+  	<div class="text-center"><%= render "changes/twitter" %></div>
+		<div class="small_space"></div>
 		<% state_selector.senates.each do |senator| %>
-		<div class="col-md-6">
-			<h3><%= senator.first_name %> <%= senator.last_name %></h3>
-			<p><%= senator.party.name %> Party</p>
-			<p>Twitter: <%= link_to "@#{senator.contact.twiter}", "https://www.twitter.com/#{senator.contact.twiter}", id: "tweet" %></p>
-			<p>Facebook: <%= link_to "Facebook", "https://www.facebook.com/#{senator.contact.facebook}" %></p>
-			<p><%= senator.contact.phone %></p>
-		</div>
-		
+			<div class="col-md-6 text-center change_wrapper">
+				<h4><%= senator.first_name %> <%= senator.last_name %></h4>
+				<p><%= senator.party.name %> Party</p>
+				<p><%= link_to "@#{senator.contact.twiter}", "https://www.twitter.com/#{senator.contact.twiter}", id: "tweet" %></p>
+				<p><%= link_to "Facebook", "https://www.facebook.com/#{senator.contact.facebook}" %></p>
+				<p><%= senator.contact.phone %></p>
+				
+			</div>
 		<% end %>
-</div>
+

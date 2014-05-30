@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
   def vote_for(change_id, value)
   	@vote = self.votes.where(change_id: change_id).first || self.votes.build(change_id: change_id)
 
-	  if @vote.value == value
-      @k == 0
+	  if @vote.value.to_s == value
+      @k = 0
     else
       @vote.value = value
       @vote.save!
