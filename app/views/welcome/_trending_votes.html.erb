@@ -6,7 +6,7 @@
 		
 		<div class="col-md-4 intro-box text-center" id="<%= change.id %>">
 			<div class="change_wrapper">
-				<h4 ><%=link_to truncate(change.name, :length => 27), change_path(change.id) %></h4>
+				<h4 ><%=link_to truncate(change.name, :length => 20), change_path(change.id) %></h4>
 				<p class="votes">For: <%= change.up_votes %> | Against: <%= change.down_votes  %></p>
 				<p><%=link_to (image_tag(change.picture_url(:thumb) )), change_path(change.id) %></p>
 				<p class="go_vote"><%=link_to "VOTE", change_path(change.id) %></p>
