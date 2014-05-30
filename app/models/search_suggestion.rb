@@ -1,6 +1,5 @@
 class SearchSuggestion < ActiveRecord::Base
 
-
 	def self.terms_for(prefix)
     suggestions = where("term like ?", "#{prefix}_%")
     suggestions.order(:popularity).limit(10).pluck(:term)
@@ -18,5 +17,4 @@ class SearchSuggestion < ActiveRecord::Base
       suggestion.increment! :popularity
     end
   end
-
 end
