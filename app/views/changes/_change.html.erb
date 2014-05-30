@@ -1,13 +1,13 @@
 <h3 class="text-center"><%= @change.name %></h3>
 
 <div class="row">
-	<div class="span6 intro-box text-center" id="<%= @change.id %>">
+	<div class="col-sm-8 col-sm-offset-2 intro-box text-center" id="<%= @change.id %>">
 		<div class="change_wrapper">
 			<p class="mutted"><%= @change.description %></p>
   
-				  <p><%=  link_to "up", vote_change_path(@change, value: 1), "data-original-title" => "You must be logged in to vote",  method: "post", remote: true, class: vote_users %></p>
+				  <p><%=  link_to 'up', vote_change_path(@change, value: 1), "data-original-title" => "You must be logged in to vote",  method: "post", remote: true, class: vote_users %></p>
 				   <p id="total_votes"><%=  @change.total_votes %></p>
-				  <p><%=  link_to "down", vote_change_path(@change, value: -1), "data-original-title" => "You must be logged in to vote",  method: "post", remote: true, class: vote_users  %></p>
+				  <p><%=  link_to 'down', vote_change_path(@change, value: -1), "data-original-title" => "You must be logged in to vote",  method: "post", remote: true, class: vote_users  %></p>
 
 
 			<p><%= link_to "Created By: #{@change.user.username}", user_path(@change.user_id) if @change.user %>

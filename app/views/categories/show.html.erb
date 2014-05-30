@@ -1,17 +1,19 @@
-<div class="row span3">
+<div class="row col-sm-8 col-sm-offset-2">
 	<% @changes.each do |change| %>
 		<br />
-			<div class="change_wrapper text-center <%= change.id %>">
-			<p><%= link_to "Created by: #{change.user.username}", user_path(change.user.id) if change.user %></p>
-			<h4><%=link_to "#{change.name}", change_path(change.id) %></h4>
-			<p><%= change.description %></p>
 
-		
-			<!-- <p><button>Follow Topic</button></p> -->
-			<%= image_tag change.picture_url(:large) %>
-			<br />
-			<br />
-		</div>
-	<% end %>
+				<div class="change_wrapper text-center <%= change.id %>">
+				<p><%= link_to "Created by: #{change.user.username}", user_path(change.user.id) if change.user %></p>
+				<h4><%=link_to "#{change.name}", change_path(change.id) %></h4>
+				<p><%= change.description %></p>
+
+			
+				<!-- <p><button>Follow Topic</button></p> -->
+				<%= image_tag change.picture_url(:large) %>
+				<br />
+				<br />
+			</div>
+		<% end %>
+
 </div>
 

@@ -7,12 +7,8 @@
 		<div class="col-md-4 intro-box text-center" id="<%= change.id %>">
 			<div class="change_wrapper">
 				<p ><%=link_to truncate(change.name, :length => 27), change_path(change.id) %></p>
-				<p class="votes">Total Votes: <%= change.aggregate %></p>
-				<p> <%# link_to "Created By: #{change.user.username}", user_path(change.user_id) if change.user %>
+				<h4 class="votes">Votes: <%= change.aggregate %></h4>
 				<p><%=link_to (image_tag(change.picture_url(:thumb) )), change_path(change.id) %></p>
-				<!-- <p class="voted"><%# link_to 'up', votes_path(vote: {upvote: true, change_id: change.id} ), :method => :post, remote: true  %> | -->
-				<%# link_to 'down', votes_path(vote: { upvote: false, change_id: change.id }), :method => :post, remote: true %>
-				<%= link_to "more...", change_path(change.id)  %>
 			</p>
 			</div>
 		</div>
