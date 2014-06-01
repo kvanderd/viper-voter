@@ -1,12 +1,12 @@
 <div class="space"></div>
 
 
-	<h4 class="text-center" >Tell Your <%= state_selector.name %> Senators</h4>
+	
 		<% if !current_user %>
 			<h5 class="text-center">Not from California?  <%= link_to "Create an Account", new_user_path %> and get your local representative's data</h5>
     <% end %>
     
-  	<div class="text-center"><%= render "changes/twitter" %></div>
+  	
 		<div class="small_space"></div>
 		<% state_selector.senates.each do |senator| %>
 			<div class="col-md-6 text-center change_wrapper">
