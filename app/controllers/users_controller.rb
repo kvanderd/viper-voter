@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		state = State.find(@user.state_id)
 	end
 
 	def new
@@ -13,13 +12,14 @@ class UsersController < ApplicationController
 		@user = User.create(user_params)
 		state = State.find_by_name(params[:search].capitalize)
 		@user.state_id = state.id
-		if @user.save!
-			login(@user)
-			flash[:notice] = "Success"
-			redirect_to :root
-		else 
-			flash[:notice] = "An error occurred, please try again."
-			render :new
+		respond_to do |format|
+			if @user.save
+				login(@user)
+				format.html { redirect_to(:root, notice: 'User was successfully created.') }
+			else 
+				 format.html { render action: "new"}
+				 format.json { render json: @user.errors, status: :unprocessable_entity }
+			end
 		end
 
 	end
@@ -31,3 +31,6 @@ class UsersController < ApplicationController
   end
 
 end
+
+
+
