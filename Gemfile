@@ -49,6 +49,9 @@ gem 'carrierwave'
 # gem "rmagick"
 gem 'mini_magick'
 
+# upload images to amazon S3
+gem "fog"
+
 #facebook omnio
 gem 'omniauth-facebook'
 group :test, :development do
