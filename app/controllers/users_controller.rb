@@ -9,9 +9,13 @@ class UsersController < ApplicationController
 	end
 
 	def create
+		ap params
 		@user = User.create(user_params)
+		# @user.state_id = State.find_by_name(params[:search].capitalize)
+
 		state = State.find_by_name(params[:search].capitalize)
-		@user.state_id = state.id
+		@user.state_id = state.id if state
+
 		respond_to do |format|
 			if @user.save
 				login(@user)

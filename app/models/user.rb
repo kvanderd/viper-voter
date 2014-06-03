@@ -1,10 +1,13 @@
 class User < ActiveRecord::Base
 	has_many :changes
 	has_many :votes #, through: :changes
-	belongs_to :state
+  belongs_to :state
 	validates :username, presence: true
 	validates :username, uniqueness: true
+  validates :state_id, presence: true
 	validates_confirmation_of :password
+
+  # accepts_nested_attributes_for :state, reject_if: :new_record?
 	has_secure_password
 
 
