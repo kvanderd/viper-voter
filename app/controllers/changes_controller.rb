@@ -28,10 +28,7 @@ class ChangesController < ApplicationController
 
 
   def vote
-
-    @k = current_user.vote_for(params[:id], params[:value])
-
-
+    @k = current_user.vote_for(params[:id], params[:value]) if current_user
     respond_to do |format|
         format.js
     end
