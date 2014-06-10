@@ -1,0 +1,8 @@
+== Opinionator.me
+Create Opinions you want your congress to know about. Vote on them and share them with your local 
+representatives. Ruby on Rails, JavaScript, Twitter and Sunlight Labs Api, rich JavaScript Opinion Creator, Bootstrap.
+
+=== Design Documentation : http://docs.katharine.org/
+
+
+=== Live App : http://opinionator.me/
