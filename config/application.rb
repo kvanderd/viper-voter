@@ -14,7 +14,7 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
-# ENV.update YAML.load(File.read(File.expand_path('../application.yml', __FILE__)))
+ENV.update YAML.load(File.read(File.expand_path('../application.yml', __FILE__)))
 
 module Opinion
   class Application < Rails::Application

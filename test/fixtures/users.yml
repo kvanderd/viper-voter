@@ -1,0 +1,18 @@
+
+katie:
+  username: kvanderd
+  password_digest: <%= BCrypt::Password.create('secret') %>
+  state: california
+
+alex:
+  username: Alex
+  password_digest: "SDfsdfsdfsdlove"
+  state: california
+
+george:
+  username: George
+  password_digest: "SDfsdfsdfsdlove"
+  state: california
+
+
+

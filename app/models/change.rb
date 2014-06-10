@@ -22,8 +22,8 @@ class Change < ActiveRecord::Base
 		# For a given change
     # Find all votes
     # Points is the difference of upvotes and downvotes
-    # Time is the difference between now and when the crush was created (in hours)
-    # We fix gravity, but can override if necessary  
+    # Time is the difference between now and when the change was created (in hours)
+    # gravity is fixed, but can override if necessary  
     points = self.aggregate
     time = ((Time.now - self.created_at) / 5760).round
     rank = (points - 1).to_f / ((time + 2)**gravity)
@@ -31,7 +31,7 @@ class Change < ActiveRecord::Base
 
 
   def aggregate
-    self.up_votes.size - self.down_votes.size
+    self.up_votes - self.down_votes
   end
 
 
