@@ -76,9 +76,10 @@ group :test, :development do
   gem 'minitest-rails-capybara'
   gem 'minitest-colorize'
   gem 'minitest-focus'
-  gem 'bcrypt-ruby', '~> 3.0.0'
+
 
 end
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
